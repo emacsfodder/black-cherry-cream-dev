@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8"/>
+    <title>html-buffer.html</title>
+<meta name="generator" content="emacs 30.2; htmlfontify" />
+<style type="text/css"><!-- 
+body, pre { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.bold   { text-decoration: none;  font-weight: 700;  font-family: monospace;  font-stretch: normal;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.bold a {  font-weight: 700;  font-family: monospace;  font-stretch: normal;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.string   { text-decoration: none;  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.string a {  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.variable-name   { text-decoration: none;  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.variable-name a {  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.function-name   { text-decoration: none;  color: #a89984;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.function-name a {  color: #a89984;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.keyword   { text-decoration: none;  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.keyword a {  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre>&lt;<span class="keyword">!DOCTYPE</span> html&gt;
+<span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">html</span> <span class="variable-name">lang</span>=<span class="string">&quot;en&quot;</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+  <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">head</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">meta</span> <span class="variable-name">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /<span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">link</span> <span class="variable-name">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="variable-name">type</span>=<span class="string">&quot;image/svg+xml&quot;</span> <span class="variable-name">href</span>=<span class="string">&quot;/logo.svg&quot;</span> /<span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">meta</span> <span class="variable-name">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="variable-name">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /<span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">title</span><span class="rainbow-delimiters-depth-1-face">&gt;</span><span class="bold">Black Cherry Cream - Palette</span><span class="rainbow-delimiters-depth-1-face">&lt;</span>/<span class="function-name">title</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">link</span> <span class="variable-name">rel</span>=<span class="string">&quot;preconnect&quot;</span> <span class="variable-name">href</span>=<span class="string">&quot;https://fonts.googleapis.com&quot;</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">link</span> <span class="variable-name">rel</span>=<span class="string">&quot;preconnect&quot;</span> <span class="variable-name">href</span>=<span class="string">&quot;https://fonts.gstatic.com&quot;</span> crossorigin<span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">link</span> <span class="variable-name">href</span>=<span class="string">&quot;https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap&quot;</span> <span class="variable-name">rel</span>=<span class="string">&quot;stylesheet&quot;</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">script</span> <span class="variable-name">type</span>=<span class="string">&quot;module&quot;</span> crossorigin <span class="variable-name">src</span>=<span class="string">&quot;./assets/index-Dukvv8A1.js&quot;</span><span class="rainbow-delimiters-depth-1-face">&gt;</span><span class="rainbow-delimiters-depth-1-face">&lt;</span>/<span class="function-name">script</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">link</span> <span class="variable-name">rel</span>=<span class="string">&quot;stylesheet&quot;</span> crossorigin <span class="variable-name">href</span>=<span class="string">&quot;./assets/index-dYwUvcND.css&quot;</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+  <span class="rainbow-delimiters-depth-1-face">&lt;</span>/<span class="function-name">head</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+  <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">body</span> <span class="variable-name">class</span>=<span class="string">&quot;dark&quot;</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+    <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="function-name">div</span> <span class="variable-name">id</span>=<span class="string">&quot;main&quot;</span> <span class="variable-name">class</span>=<span class="string">&quot;dark absolute top-0 left-0 right-0 h-[100vh] overflow-scroll z-10&quot;</span><span class="rainbow-delimiters-depth-1-face">&gt;</span><span class="rainbow-delimiters-depth-1-face">&lt;</span>/<span class="function-name">div</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+  <span class="rainbow-delimiters-depth-1-face">&lt;</span>/<span class="function-name">body</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+<span class="rainbow-delimiters-depth-1-face">&lt;</span>/<span class="function-name">html</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+</pre>
+
+ </body>
+</html>
