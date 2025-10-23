@@ -330,6 +330,11 @@
   let isDragging = false;
   let dragOffset = { x: 0, y: 0 };
 
+  window.togglePaletteContent = function () {
+    const paletteContent = document.getElementById('palette-content')
+    paletteContent.hidden = !paletteContent.hidden
+  }
+
   function createSwatch(color, name, index) {
     const swatch = document.createElement('div');
     swatch.className = 'palette-swatch';
@@ -446,12 +451,17 @@
                 border-bottom: 1px solid #333;
                 cursor: grab;
                 display: flex;
+                min-width: 20em;
                 justify-content: space-between;
                 align-items: center;
             ">
                 <span style="color: #fff; font-weight: bold;">🎨 Palette</span>
+                <span
+                  style='background-color: #FFF2; padding: 5px 14px;'
+                  onclick='togglePaletteContent()'
+                >-</span>
             </div>
-            <div class="palette-content" style="padding: 10px;">
+            <div id='palette-content' class="palette-content" style="padding: 10px;">
                 <div class="palette-swatches-grid" style="
                     display: grid;
                     grid-template-columns: repeat(8, 30px);
