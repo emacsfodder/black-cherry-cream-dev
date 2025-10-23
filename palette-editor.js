@@ -153,7 +153,7 @@
                         padding: 5px 10px;
                         cursor: pointer;
                         flex: 1;
-                    ">Import</button>
+        ">Import/Load/Save</button>
                     <button onclick="window.addSwatch()" style="
                         background: #333;
                         color: #fff;
@@ -200,7 +200,10 @@
             " placeholder="Paste your palette array here...">${JSON.stringify(currentPalette, null, 2)}</textarea>
             <div style="margin-top: 10px; display: flex; gap: 5px;">
                 <button onclick="window.importFromTextarea()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Import</button>
-                <button onclick="this.parentElement.parentElement.remove()" style="background: #ff4444; color: #fff; border: none; padding: 5px 10px; cursor: pointer;">Cancel</button>
+
+	    <button onclick="window.loadPaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Load</button>
+	    <button onclick="window.savePaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Save</button>
+	                <button onclick="this.parentElement.parentElement.remove()" style="background: #ff4444; color: #fff; border: none; padding: 5px 10px; cursor: pointer;">Close</button>
             </div>
         `;
         
@@ -211,6 +214,31 @@
     window.updateSwatchColor = function(index, newColor) {
         currentPalette[index].color = newColor;
     };
+
+
+    window.savePaletteLocalData = function() {
+	const jsonPalette = JSON.stringify(currentPalette, null, 2);
+	localStorage.setItem('palette', jsonPalette);
+	// alert('Saved palette to local storage');
+    }
+    
+    window.loadPaletteLocalData = function() {
+	const jsonPalette = localStorage.getItem('palette');
+	if (!jsonPalette) return;
+	try {
+	    const newPalette = JSON.parse(jsonPalette)
+            if (Array.isArray(newPalette)) {
+                currentPalette = newPalette;
+		const textarea = document.getElementById('palette-import-text')
+		textarea.textContent = JSON.stringify(currentPalette, null, 2);
+                renderPalette();
+		// alert('Loaded palette from local storage')
+            }
+	    
+	} catch(e) {
+	    alert(`Invalid palette format: ${e.message}`)
+	}
+    }
     
     window.importFromTextarea = function() {
         const textarea = document.getElementById('palette-import-text');
@@ -219,7 +247,6 @@
             if (Array.isArray(newPalette)) {
                 currentPalette = newPalette;
                 renderPalette();
-                textarea.parentElement.parentElement.remove();
             }
         } catch (e) {
             alert('Invalid palette format: ' + e.message);

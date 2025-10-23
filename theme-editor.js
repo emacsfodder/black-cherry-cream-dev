@@ -78,6 +78,9 @@
                 <div style="margin-bottom: 10px;">
                     <button onclick="window.exportTheme()" style="margin-right: 5px; padding: 4px 8px;">Export Theme</button>
                     <button onclick="window.importTheme()" style="padding: 4px 8px;">Import Theme</button>
+ 
+                    <button onclick="window.saveThemeLocalData()" style="margin-right: 5px; padding: 4px 8px;">Save Theme</button>
+                    <button onclick="window.loadThemeLocalData()" style="padding: 4px 8px;">Load Theme</button>
                 </div>
                 <div style="font-size: 11px; color: #aaa; margin-bottom: 10px;">
                     ${faces.length} faces found
@@ -127,30 +130,42 @@
         return '#000000'; // fallback
     }
     
-    // Export/Import functions...
-    function exportTheme() {
-        const { currentColors } = extractFacesFromStyleTags();
-        const themeData = JSON.stringify(currentColors, null, 2);
-        navigator.clipboard.writeText(themeData).then(() => {
-            alert('Theme copied to clipboard!');
-        }).catch(() => {
-            alert('Theme data:\n\n' + themeData);
-        });
-    }
-    
-    function importTheme() {
-        const themeJson = prompt('Paste theme JSON:');
-        if (!themeJson) return;
-        try {
+    function parseTheme(themeJson, reporter) {
+	try {
             const theme = JSON.parse(themeJson);
             Object.entries(theme).forEach(([faceName, colors]) => {
                 if (colors.color) updateFaceColor(faceName, 'color', colors.color);
                 if (colors.backgroundColor) updateFaceColor(faceName, 'backgroundColor', colors.backgroundColor);
             });
-            alert('Theme imported!');
+            reporter('Theme imported!');
         } catch (e) {
-            alert('Invalid JSON: ' + e.message);
+            reporter('Invalid JSON: ' + e.message);
         }
+    }
+    
+    function saveThemeLocalData() {
+	const { currentColors } = extractFacesFromStyleTags();
+	const { themeData } = JSON.stringify(currentColors, null, 2);
+	localStorage.setItem('theme', themeData);
+    }
+
+    function loadThemeLocalData() {
+	const themeJson = localStorage.getItem('theme')
+	if (!themeJson) return;	  
+	parseTheme(themeJson, alert)
+    }
+    
+    // Export/Import functions...
+    function exportTheme() {
+        const { currentColors } = extractFacesFromStyleTags();
+        const themeData = JSON.stringify(currentColors, null, 2);
+        alert('Theme data:\n\n' + themeData);
+    }
+    
+    function importTheme() {
+        const themeJson = prompt('Paste theme JSON:');
+        if (!themeJson) return;
+        parseTheme(themeJson, alert)
     }
     
     // Make global
