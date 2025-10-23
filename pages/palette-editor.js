@@ -455,7 +455,7 @@
                 justify-content: space-between;
                 align-items: center;
             ">
-                <span style="color: #fff; font-weight: bold;">🎨 Palette</span>
+                <span style="color: #fff; font-weight: bold;">🎨 Palette Editor</span>
                 <span
                   style='background-color: #FFF2; padding: 5px 14px;'
                   onclick='togglePaletteContent()'
