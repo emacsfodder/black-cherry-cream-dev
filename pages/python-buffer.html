@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8"/>
+    <title>main.py</title>
+<meta name="generator" content="emacs 30.2; htmlfontify" />
+<style type="text/css"><!-- 
+body, pre { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-6-face   { text-decoration: none;  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-6-face a {  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-5-face   { text-decoration: none;  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-5-face a {  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-4-face   { text-decoration: none;  color: #3c5457;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-4-face a {  color: #3c5457;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-3-face   { text-decoration: none;  color: #466265;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-3-face a {  color: #466265;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.comment   { text-decoration: none;  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.comment a {  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-2-face   { text-decoration: none;  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-2-face a {  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.constant   { text-decoration: none;  color: #bbaa97;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.constant a {  color: #bbaa97;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.variable-name   { text-decoration: none;  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.variable-name a {  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.string   { text-decoration: none;  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.string a {  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.number   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.number a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.builtin   { text-decoration: none;  color: #77fee9;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.builtin a {  color: #77fee9;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.keyword   { text-decoration: none;  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.keyword a {  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+				     --> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> wave
+<span class="keyword">import</span> math
+<span class="keyword">import</span> sys
+
+<span class="keyword">if</span> <span class="builtin">len</span><span class="rainbow-delimiters-depth-1-face">(</span>sys.argv<span class="rainbow-delimiters-depth-1-face">)</span> != <span class="number">2</span>:
+    <span class="builtin">print</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">'Requires .wav file as arg'</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    exit<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="variable-name">file</span> = sys.argv<span class="rainbow-delimiters-depth-1-face">[</span><span class="number">1</span><span class="rainbow-delimiters-depth-1-face">]</span>
+
+<span class="keyword">with</span> wave.open<span class="rainbow-delimiters-depth-1-face">(</span>file, <span class="string">&quot;r&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span> <span class="keyword">as</span> wav_file:
+    <span class="variable-name">num_channels</span> = wav_file.getnchannels<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">frame_rate</span> = wav_file.getframerate<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">downsample</span> = math.ceil<span class="rainbow-delimiters-depth-1-face">(</span>frame_rate * num_channels / <span class="number">2</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">process_chunk_size</span> = <span class="number">600000</span> - <span class="rainbow-delimiters-depth-1-face">(</span><span class="number">600000</span> % frame_rate<span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">signal</span> = <span class="constant">None</span>
+    <span class="variable-name">waveform</span> = np.array<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-2-face">[</span><span class="rainbow-delimiters-depth-2-face">]</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="keyword">while</span> signal <span class="keyword">is</span> <span class="constant">None</span> <span class="keyword">or</span> signal.size &gt; <span class="number">0</span>:
+        <span class="variable-name">signal</span> = np.frombuffer<span class="rainbow-delimiters-depth-1-face">(</span>wav_file.readframes<span class="rainbow-delimiters-depth-2-face">(</span>process_chunk_size<span class="rainbow-delimiters-depth-2-face">)</span>, dtype=<span class="string">'int16'</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+        <span class="comment"># Take mean of absolute values per 0.5 seconds</span>
+        <span class="variable-name">sub_waveform</span> = np.nanmean<span class="rainbow-delimiters-depth-1-face">(</span>
+            np.pad<span class="rainbow-delimiters-depth-2-face">(</span>np.absolute<span class="rainbow-delimiters-depth-3-face">(</span>signal<span class="rainbow-delimiters-depth-3-face">)</span>, <span class="rainbow-delimiters-depth-3-face">(</span><span class="number">0</span>, <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>downsample - <span class="rainbow-delimiters-depth-6-face">(</span>signal.size % downsample<span class="rainbow-delimiters-depth-6-face">)</span><span class="rainbow-delimiters-depth-5-face">)</span> % downsample<span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span>, mode=<span class="string">'constant'</span><span class="rainbow-delimiters-depth-2-face">)</span>.reshape<span class="rainbow-delimiters-depth-2-face">(</span>-<span class="number">1</span>, downsample<span class="rainbow-delimiters-depth-2-face">)</span>,
+            axis=<span class="number">1</span>
+        <span class="rainbow-delimiters-depth-1-face">)</span>
+
+        <span class="variable-name">waveform</span> = np.concatenate<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-2-face">(</span>waveform, sub_waveform<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    
+    plt.figure<span class="rainbow-delimiters-depth-1-face">(</span><span class="number">1</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    plt.title<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">'Waveform'</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    plt.plot<span class="rainbow-delimiters-depth-1-face">(</span>waveform<span class="rainbow-delimiters-depth-1-face">)</span>
+    plt.show<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+</pre>
+        <script src='theme-editor.js' ></script>
+    <script src='palette-editor.js' ></script>
+
+ </body>
+</html>
