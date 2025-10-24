@@ -4,6 +4,34 @@
 
   const defaultPalette = [
     {
+      "color": "#ffdce3",
+      "name": "cherry-powder"
+    },
+    {
+      "color": "#ffa3b7",
+      "name": "cherry-sakura"
+    },
+    {
+      "color": "#ff5c8b",
+      "name": "cherry-frosting"
+    },
+    {
+      "color": "#e00064",
+      "name": "cherry-gummy"
+    },
+    {
+      "color": "#a00045",
+      "name": "cherry-brite"
+    },
+    {
+      "color": "#640028",
+      "name": "cherry-lips"
+    },
+    {
+      "color": "#2c000e",
+      "name": "cherry-cola"
+    },
+    {
       "color": "#7D0109",
       "name": "cherry-deep-lighter-30%"
     },

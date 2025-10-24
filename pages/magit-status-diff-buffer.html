@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>magit-status-diff-buffer</title>
+<meta name="generator" content="emacs 30.2; htmlfontify" />
+<style type="text/css"><!-- 
+body, pre { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.magit-branch-local-0007   { text-decoration: none;  display: none;  color: #61acbb;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  border-width: 1px;  font-size: 10pt; }
+span.magit-branch-local-0007 a {  display: none;  color: #61acbb;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  border-width: 1px;  font-size: 10pt; text-decoration: underline; }
+span.default-0006   { text-decoration: none;  display: none;  color: #83a598;  font-size: 105%; }
+span.default-0006 a {  display: none;  color: #83a598;  font-size: 105%; text-decoration: underline; }
+span.default-0005   { text-decoration: none;  display: none;  color: #4c443e;  font-size: 105%; }
+span.default-0005 a {  display: none;  color: #4c443e;  font-size: 105%; text-decoration: underline; }
+span.magit-diff-added-highlight   { text-decoration: none;  color: #86c9d3;  background: #324c51;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; }
+span.magit-diff-added-highlight a {  color: #86c9d3;  background: #324c51;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; text-decoration: underline; }
+span.magit-diff-removed-highlight   { text-decoration: none;  color: #fb4933;  background: #3f1b1b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; }
+span.magit-diff-removed-highlight a {  color: #fb4933;  background: #3f1b1b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; text-decoration: underline; }
+span.magit-diff-context-highlight   { text-decoration: none;  color: #62574e;  background: #181616;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; }
+span.magit-diff-context-highlight a {  color: #62574e;  background: #181616;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; text-decoration: underline; }
+span.magit-diff-hunk-heading-highlight-0004   { text-decoration: none;  color: #aca8c0;  background: #4c443e;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; }
+span.magit-diff-hunk-heading-highlight-0004 a {  color: #aca8c0;  background: #4c443e;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; text-decoration: underline; }
+span.magit-diff-file-heading-highlight-0003   { text-decoration: none;  background: #181616;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  font-size: 10pt; }
+span.magit-diff-file-heading-highlight-0003 a {  background: #181616;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  font-size: 10pt; text-decoration: underline; }
+span.magit-diff-file-heading-highlight-0002   { text-decoration: none;  background: #181616;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  font-size: 10pt; }
+span.magit-diff-file-heading-highlight-0002 a {  background: #181616;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  font-size: 10pt; text-decoration: underline; }
+span.default-0001   { text-decoration: none;  display: none;  font-size: 105%; }
+span.default-0001 a {  display: none;  font-size: 105%; text-decoration: underline; }
+span.default-0000   { text-decoration: none;  display: none;  background: #22201e;  color: #aca8c0;  font-size: 105%; }
+span.default-0000 a {  display: none;  background: #22201e;  color: #aca8c0;  font-size: 105%; text-decoration: underline; }
+span.magit-diff-file-heading   { text-decoration: none;  font-weight: 700;  font-family: monospace;  font-stretch: normal;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.magit-diff-file-heading a {  font-weight: 700;  font-family: monospace;  font-stretch: normal;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.magit-section-child-count   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.magit-section-child-count a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.magit-section-heading   { text-decoration: none;  color: #d5c4a1;  background: #0a1c21;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; }
+span.magit-section-heading a {  color: #d5c4a1;  background: #0a1c21;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; text-decoration: underline; }
+span.magit-branch-remote   { text-decoration: none;  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.magit-branch-remote a {  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.magit-branch-local   { text-decoration: none;  color: #61acbb;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.magit-branch-local a {  color: #61acbb;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+ --></style>
+
+    <script type="text/javascript"><!--
+  // this function is needed to work around
+  // a bug in IE related to element attributes
+  function hasClass(obj)
+  {
+      var result = false;
+      if (obj.getAttributeNode("class") != null)
+      {
+          result = obj.getAttributeNode("class").value;
+      }
+      return result;
+  }
+
+  function stripe(id)
+  {
+      // the flag we'll use to keep track of
+      // whether the current row is odd or even
+      var even = false;
+
+      // if arguments are provided to specify the colors
+      // of the even & odd rows, then use them;
+      // otherwise use the following defaults:
+      var evenColor = arguments[1] ? arguments[1] : "#fff";
+      var oddColor  = arguments[2] ? arguments[2] : "#ddd";
+
+      // obtain a reference to the desired table
+      // if no such table exists, abort
+      var table = document.getElementById(id);
+      if (! table) { return; }
+
+      // by definition, tables can have more than one tbody
+      // element, so we'll have to get the list of child
+      // &lt;tbody&gt;s
+      var tbodies = table.getElementsByTagName("tbody");
+
+      // and iterate through them...
+      for (var h = 0; h < tbodies.length; h++)
+      {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++)
+          {
+              // avoid rows that have a class attribute
+              // or backgroundColor style
+              if (! hasClass(trs[i]) &&
+                  ! trs[i].style.backgroundColor)
+              {
+                  // get all the cells in this row...
+                  var tds = trs[i].getElementsByTagName("td");
+
+                  // and iterate through them...
+                  for (var j = 0; j < tds.length; j++)
+                  {
+                      var mytd = tds[j];
+
+                      // avoid cells that have a class attribute
+                      // or backgroundColor style
+                      if (! hasClass(mytd) &&
+                          ! mytd.style.backgroundColor)
+                      {
+                          mytd.style.backgroundColor =
+                            even ? evenColor : oddColor;
+                      }
+                  }
+              }
+              // flip from odd to even, or vice-versa
+              even =  ! even;
+          }
+      }
+  }
+
+  function toggle_invis( name )
+  {
+      var filter =
+        { acceptNode:
+          function( node )
+          { var classname = node.id;
+            if( classname )
+            { var classbase = classname.substr( 0, name.length );
+              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+            return NodeFilter.FILTER_SKIP; } };
+      var walker = document.createTreeWalker( document.body           ,
+                                              NodeFilter.SHOW_ELEMENT ,
+                                              filter                  ,
+                                              false                   );
+      while( walker.nextNode() )
+      {
+          var e = walker.currentNode;
+          if( e.style.display == "none" ) { e.style.display = "inline"; }
+          else                            { e.style.display = "none";   }
+      }
+  }
+--> </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+
+<pre>Head:     <span class="magit-branch-local" id="nil-11">main</span> Add C example with inline asm
+Rebase:   <span class="magit-branch-remote" id="nil-56">github/main</span> Add C example with inline asm
+Push:     <span class="magit-branch-remote" id="nil-108">github/main</span> Add C example with inline asm
+
+<span class="magit-section-heading" id="nil-151">Untracked files</span><span class="magit-section-child-count" id="nil-166"> (1</span><span class="magit-section-child-count" id="nil-169">)</span>
+<span class="magit-section-heading" id="nil-171">Unstaged changes</span><span class="magit-section-child-count" id="nil-187"> (</span>2<span class="magit-section-child-count" id="nil-190">)</span>
+<span class="magit-diff-file-heading" id="nil-192">modified   public/pages/c-buffer.htm</span><span class="magit-diff-file-heading" id="nil-228">l</span>
+<span onclick="toggle_invis('invisible-230-11365');">…</span><span class="default-0000" id="invisible-230-11365-230">@@ -5,33 +5,33 @@</span><span class="default-0000" id="invisible-230-11365-247">
+</span><span class="default-0001" id="invisible-230-11365-248">     &lt;meta name=&quot;generator&quot; content=&quot;emacs 30.1.90; htmlfontify&quot; /&gt;
+     &lt;style type=&quot;text/css&quot;&gt;
+       &lt;!--
+-      body, pre { text-decoration: none;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+-      span.default   { text-decoration: none;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+-      span.default a {  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.rainbow-delimiters-depth-3-face   { text-decoration: none;  color: #466265;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.rainbow-delimiters-depth-3-face a {  color: #466265;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.comment   { text-decoration: none;  color: #928374;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.comment a {  color: #928374;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.comment-delimiter   { text-decoration: none;  color: #928374;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.comment-delimiter a {  color: #928374;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.rainbow-delimiters-depth-2-face   { text-decoration: none;  color: #507073;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.rainbow-delimiters-depth-2-face a {  color: #507073;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.constant   { text-decoration: none;  color: #bbaa97;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.constant a {  color: #bbaa97;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.variable-name   { text-decoration: none;  color: #83a598;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.variable-name a {  color: #83a598;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.function-name   { text-decoration: none;  color: #a89984;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.function-name a {  color: #a89984;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.type   { text-decoration: none;  color: #66999d;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.type a {  color: #66999d;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.keyword   { text-decoration: none;  color: #66999d;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.keyword a {  color: #66999d;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.string   { text-decoration: none;  color: #528b8b;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.string a {  color: #528b8b;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-      span.preprocessor   { text-decoration: none;  color: #77fee9;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-      span.preprocessor a {  color: #77fee9;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      body, pre { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
++      span.default   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
++      span.default a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.rainbow-delimiters-depth-3-face   { text-decoration: none;  color: #466265;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.rainbow-delimiters-depth-3-face a {  color: #466265;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.comment   { text-decoration: none;  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.comment a {  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.comment-delimiter   { text-decoration: none;  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.comment-delimiter a {  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.rainbow-delimiters-depth-2-face   { text-decoration: none;  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.rainbow-delimiters-depth-2-face a {  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.constant   { text-decoration: none;  color: #bbaa97;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.constant a {  color: #bbaa97;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.variable-name   { text-decoration: none;  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.variable-name a {  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.function-name   { text-decoration: none;  color: #a89984;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.function-name a {  color: #a89984;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.type   { text-decoration: none;  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.type a {  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.keyword   { text-decoration: none;  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.keyword a {  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.string   { text-decoration: none;  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.string a {  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
++      span.preprocessor   { text-decoration: none;  color: #77fee9;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
++      span.preprocessor a {  color: #77fee9;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+        --&gt;
+     &lt;/style&gt;
+ 
+</span><span class="magit-diff-file-heading-highlight-0002" id="nil-11365">modified   public/pages/palette-editor.js</span><span class="magit-diff-file-heading-highlight-0003" id="nil-11406">
+</span><span class="magit-diff-hunk-heading-highlight-0004" id="nil-11407">@@ -1,8 +1,34 @@</span><span class="magit-diff-hunk-heading-highlight-0004" id="nil-11423">
+</span><span class="magit-diff-context-highlight" id="nil-11424"> // palette-swatches.js
+ (function () {
+</span><span class="magit-diff-removed-highlight" id="nil-11464">-  'use strict';
+-
+</span><span class="magit-diff-context-highlight" id="nil-11483">   const defaultPalette = [
+</span><span class="magit-diff-added-highlight" id="nil-11511">+    {
++      &quot;color&quot;: &quot;#ffdce3&quot;,
++      &quot;name&quot;: &quot;cherry-powder&quot;
++    },
++    {
++      &quot;color&quot;: &quot;#ffa3b7&quot;,
++      &quot;name&quot;: &quot;cherry-sakura&quot;
++    },
++    {
++      &quot;color&quot;: &quot;#ff5c8b&quot;,
++      &quot;name&quot;: &quot;cherry-frosting&quot;
++    },
++    {
++      &quot;color&quot;: &quot;#e00064&quot;,
++      &quot;name&quot;: &quot;cherry-gummy&quot;
++    },
++    {
++      &quot;color&quot;: &quot;#a00045&quot;,
++      &quot;name&quot;: &quot;cherry-brite&quot;
++    },
++    {
++      &quot;color&quot;: &quot;#640028&quot;,
++      &quot;name&quot;: &quot;cherry-lips&quot;
++    },
++    {
++      &quot;color&quot;: &quot;#2c000e&quot;,
++      &quot;name&quot;: &quot;cherry-cola&quot;
++    },
+</span><span class="magit-diff-context-highlight" id="nil-12018">     {
+       &quot;color&quot;: &quot;#7D0109&quot;,
+       &quot;name&quot;: &quot;cherry-deep-lighter-30%&quot;
+</span>
+<span class="magit-section-heading" id="nil-12094">R</span><span class="magit-section-heading" id="nil-12095">ecent commit</span><span class="magit-section-heading" id="nil-12107">s</span>
+<span onclick="toggle_invis('invisible-12109-12553');">…</span><span class="default-0005" id="invisible-12109-12553-12109">3</span><span class="default-0005" id="invisible-12109-12553-12110">3b3a2a8</span><span class="default-0001" id="invisible-12109-12553-12117"> </span><span class="default-0006" id="invisible-12109-12553-12118">github/</span><span class="magit-branch-local-0007" id="invisible-12109-12553-12125">main</span><span class="default-0001" id="invisible-12109-12553-12129"> Add C example with inline asm</span><span class="default-0001" id="invisible-12109-12553-12159">
+</span><span class="default-0005" id="invisible-12109-12553-12160">e</span><span class="default-0005" id="invisible-12109-12553-12161">d44732f</span><span class="default-0001" id="invisible-12109-12553-12168"> Add BlackCherryCreamExtended Palette</span><span class="default-0001" id="invisible-12109-12553-12205">
+</span><span class="default-0005" id="invisible-12109-12553-12206">c</span><span class="default-0005" id="invisible-12109-12553-12207">1acfc28</span><span class="default-0001" id="invisible-12109-12553-12214"> Fix Palette Editor title</span><span class="default-0001" id="invisible-12109-12553-12239">
+</span><span class="default-0005" id="invisible-12109-12553-12240">1</span><span class="default-0005" id="invisible-12109-12553-12241">e529e78</span><span class="default-0001" id="invisible-12109-12553-12248"> Update theme / palette editor</span><span class="default-0001" id="invisible-12109-12553-12278">
+</span><span class="default-0005" id="invisible-12109-12553-12279">f</span><span class="default-0005" id="invisible-12109-12553-12280">023c762</span><span class="default-0001" id="invisible-12109-12553-12287"> We can now show dev pages locally</span><span class="default-0001" id="invisible-12109-12553-12321">
+</span><span class="default-0005" id="invisible-12109-12553-12322">3</span><span class="default-0005" id="invisible-12109-12553-12323">b80758d</span><span class="default-0001" id="invisible-12109-12553-12330">  vite handles pages</span><span class="default-0001" id="invisible-12109-12553-12350">
+</span><span class="default-0005" id="invisible-12109-12553-12351">6</span><span class="default-0005" id="invisible-12109-12553-12352">accec91</span><span class="default-0001" id="invisible-12109-12553-12359"> Fix default palette</span><span class="default-0001" id="invisible-12109-12553-12379">
+</span><span class="default-0005" id="invisible-12109-12553-12380">9</span><span class="default-0005" id="invisible-12109-12553-12381">e64e842</span><span class="default-0001" id="invisible-12109-12553-12388"> Create pages directory before copying page files</span><span class="default-0001" id="invisible-12109-12553-12437">
+</span><span class="default-0005" id="invisible-12109-12553-12438">6</span><span class="default-0005" id="invisible-12109-12553-12439">02c2470</span><span class="default-0001" id="invisible-12109-12553-12446"> Fix deployment script to copy pages to the correct directory</span><span class="default-0001" id="invisible-12109-12553-12507">
+</span><span class="default-0005" id="invisible-12109-12553-12508">9</span><span class="default-0005" id="invisible-12109-12553-12509">7f90b08</span><span class="default-0001" id="invisible-12109-12553-12516"> Copy pages/html+js to public pages</span><span class="default-0001" id="invisible-12109-12553-12551">
+</span><span class="default-0001" id="invisible-12109-12553-12552">
+</span></pre>
+        <script src='theme-editor.js' ></script>
+    <script src='palette-editor.js' ></script>
+ </body>
+</html>
