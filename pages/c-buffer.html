@@ -1,0 +1,197 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>c-buffer</title>
+    <meta name="generator" content="emacs 30.1.90; htmlfontify" />
+    <style type="text/css">
+      <!--
+      body, pre { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+      span.default   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+      span.default a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.rainbow-delimiters-depth-3-face   { text-decoration: none;  color: #466265;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.rainbow-delimiters-depth-3-face a {  color: #466265;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.comment   { text-decoration: none;  color: #928374;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.comment a {  color: #928374;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.comment-delimiter   { text-decoration: none;  color: #928374;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.comment-delimiter a {  color: #928374;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.rainbow-delimiters-depth-2-face   { text-decoration: none;  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.rainbow-delimiters-depth-2-face a {  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.constant   { text-decoration: none;  color: #bbaa97;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.constant a {  color: #bbaa97;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.variable-name   { text-decoration: none;  color: #83a598;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.variable-name a {  color: #83a598;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.function-name   { text-decoration: none;  color: #a89984;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.function-name a {  color: #a89984;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.type   { text-decoration: none;  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.type a {  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.keyword   { text-decoration: none;  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.keyword a {  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.string   { text-decoration: none;  color: #528b8b;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.string a {  color: #528b8b;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+      span.preprocessor   { text-decoration: none;  color: #77fee9;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+      span.preprocessor a {  color: #77fee9;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+       -->
+    </style>
+
+    <script type="text/javascript">
+      <!--
+      // this function is needed to work around
+      // a bug in IE related to element attributes
+      function hasClass(obj) {
+        var result = false;
+        if (obj.getAttributeNode("class") != null) {
+          result = obj.getAttributeNode("class").value;
+        }
+        return result;
+      }
+
+      function stripe(id) {
+        // the flag we'll use to keep track of
+        // whether the current row is odd or even
+        var even = false;
+
+        // if arguments are provided to specify the colors
+        // of the even & odd rows, then use them;
+        // otherwise use the following defaults:
+        var evenColor = arguments[1] ? arguments[1] : "#fff";
+        var oddColor = arguments[2] ? arguments[2] : "#ddd";
+
+        // obtain a reference to the desired table
+        // if no such table exists, abort
+        var table = document.getElementById(id);
+        if (!table) {
+          return;
+        }
+
+        // by definition, tables can have more than one tbody
+        // element, so we'll have to get the list of child
+        // &lt;tbody&gt;s
+        var tbodies = table.getElementsByTagName("tbody");
+
+        // and iterate through them...
+        for (var h = 0; h < tbodies.length; h++) {
+          // find all the &lt;tr&gt; elements...
+          var trs = tbodies[h].getElementsByTagName("tr");
+
+          // ... and iterate through them
+          for (var i = 0; i < trs.length; i++) {
+            // avoid rows that have a class attribute
+            // or backgroundColor style
+            if (!hasClass(trs[i]) && !trs[i].style.backgroundColor) {
+              // get all the cells in this row...
+              var tds = trs[i].getElementsByTagName("td");
+
+              // and iterate through them...
+              for (var j = 0; j < tds.length; j++) {
+                var mytd = tds[j];
+
+                // avoid cells that have a class attribute
+                // or backgroundColor style
+                if (!hasClass(mytd) && !mytd.style.backgroundColor) {
+                  mytd.style.backgroundColor = even ? evenColor : oddColor;
+                }
+              }
+            }
+            // flip from odd to even, or vice-versa
+            even = !even;
+          }
+        }
+      }
+
+      function toggle_invis(name) {
+        var filter = {
+          acceptNode: function (node) {
+            var classname = node.id;
+            if (classname) {
+              var classbase = classname.substr(0, name.length);
+              if (classbase == name) {
+                return NodeFilter.FILTER_ACCEPT;
+              }
+            }
+            return NodeFilter.FILTER_SKIP;
+          },
+        };
+        var walker = document.createTreeWalker(
+          document.body,
+          NodeFilter.SHOW_ELEMENT,
+          filter,
+          false
+        );
+        while (walker.nextNode()) {
+          var e = walker.currentNode;
+          if (e.style.display == "none") {
+            e.style.display = "inline";
+          } else {
+            e.style.display = "none";
+          }
+        }
+      }
+      -->
+    </script>
+  </head>
+  <body onload="stripe('index'); return true;">
+    <pre><span class="preprocessor">#</span><span class="preprocessor">include</span> <span class="rainbow-delimiters-depth-1-face">&lt;</span><span class="string">stdio.h</span><span class="rainbow-delimiters-depth-1-face">&gt;</span>
+
+<span class="keyword">i</span><span class="keyword">nline</span> <span class="type">boo</span><span class="type">l</span> <span class="function-name">acquireLock</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="type">int</span> *<span class="variable-name">lock</span><span class="rainbow-delimiters-depth-1-face">)</span><span class="rainbow-delimiters-depth-1-face">{</span>
+  <span class="type">boo</span><span class="type">l</span> <span class="variable-name">returnvalue</span> = <span class="constant">false</span>;
+  <span class="type">in</span><span class="type">t</span> <span class="variable-name">lockval</span>;
+  <span class="keyword">asm</span> <span class="keyword">volatile</span><span class="rainbow-delimiters-depth-2-face">(</span>
+              <span class="comment-delimiter">/*</span><span class="comment">--------a fence here-----</span><span class="comment-delimiter">*/</span>
+
+               <span class="string">&quot;  0: lwarx %0,0,%2   \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">Loads the word and reserves
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">a memory location for the subsequent
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">stwcx. instruction.
+</span>
+               <span class="string">&quot;     cmpwi %0,0      \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">Compares the lock value to 0.
+</span>               <span class="string">&quot;     bne- 1f         \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">If it is 0, you can acquire the
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">lock. Otherwise, you did not get the
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">lock and must try again later.
+</span>
+               <span class="string">&quot;     ori %0,%0,1     \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">Sets the lock to 1.
+</span>               <span class="string">&quot;     stwcx. %0,0,%2  \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">Tries to conditionally store 1
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">into the lock word to acquire
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">the lock.
+</span>
+               <span class="string">&quot;     bne- 0b         \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">Reservation was lost. Try again.
+</span>
+               <span class="string">&quot;     isync           \n&quot;</span> <span class="comment-delimiter">/</span><span class="comment-delimiter">/ </span><span class="comment">Lock acquired. The isync instruction
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">implements an import barrier to
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">ensure that the instructions that
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">access the shared region guarded by
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">this lock are executed only after
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">they acquire the lock.
+</span>
+               <span class="string">&quot;     ori  %1,%1,1    \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">Sets the return value for the
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">function acquireLock to true.
+</span>
+               <span class="string">&quot;  1:                 \n&quot;</span> <span class="comment-delimiter">// </span><span class="comment">Did not get the lock.
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">Will return false.
+</span>
+               <span class="comment-delimiter">/*</span><span class="comment">------a fence here------</span><span class="comment-delimiter">*/</span>
+
+               :     <span class="string">&quot;+r&quot;</span>   <span class="rainbow-delimiters-depth-3-face">(</span>lockval<span class="rainbow-delimiters-depth-3-face">)</span>,
+                     <span class="string">&quot;+r&quot;</span>   <span class="rainbow-delimiters-depth-3-face">(</span>returnvalue<span class="rainbow-delimiters-depth-3-face">)</span>
+               :     <span class="string">&quot;r&quot;</span>    <span class="rainbow-delimiters-depth-3-face">(</span>lock<span class="rainbow-delimiters-depth-3-face">)</span>       <span class="comment-delimiter">/</span><span class="comment-delimiter">/ </span><span class="comment">&quot;lock&quot; is the address of the lock in
+</span>                                         <span class="comment-delimiter">// </span><span class="comment">memory.
+</span>
+               :     <span class="string">&quot;cr0&quot;</span>               <span class="comment-delimiter">// </span><span class="comment">cr0 is clobbered by cmpwi and stwcx.
+</span>               <span class="rainbow-delimiters-depth-2-face">)</span>;
+
+  <span class="keyword">return</span> returnvalue;
+<span class="rainbow-delimiters-depth-1-face">}</span>
+<span class="type">in</span><span class="type">t</span> <span class="function-name">main</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="rainbow-delimiters-depth-1-face">{</span>
+  <span class="type">in</span><span class="type">t</span> <span class="variable-name">myLock</span>;
+  <span class="keyword">if</span><span class="rainbow-delimiters-depth-2-face">(</span>acquireLock<span class="rainbow-delimiters-depth-3-face">(</span>&amp;myLock<span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-2-face">{</span>
+       printf<span class="rainbow-delimiters-depth-3-face">(</span><span class="string">&quot;got it!\n&quot;</span><span class="rainbow-delimiters-depth-3-face">)</span>;
+  <span class="rainbow-delimiters-depth-2-face">}</span><span class="keyword">else</span><span class="rainbow-delimiters-depth-2-face">{</span>
+       printf<span class="rainbow-delimiters-depth-3-face">(</span><span class="string">&quot;someone else got it\n&quot;</span><span class="rainbow-delimiters-depth-3-face">)</span>;
+  <span class="rainbow-delimiters-depth-2-face">}</span>
+  <span class="keyword">return</span> 0;
+<span class="rainbow-delimiters-depth-1-face">}</span></pre>
+    <script src="theme-editor.js"></script>
+    <script src="palette-editor.js"></script>
+  </body>
+</html>
