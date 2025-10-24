@@ -398,7 +398,8 @@
                 display: none;
                 gap: 2px;
             ">
-                <button onclick="window.deleteSwatch(${index})" style="background: none; border: none; color: #fff; cursor: pointer;">🗑️</button>
+            <button onclick="window.deleteSwatch(${index})" style="background: none; border: none; color: #fff; cursor: pointer;">🗑️</button>
+            ${color}
             </div>
         `;
 
@@ -513,6 +514,7 @@
                         cursor: pointer;
                         flex: 1;
                     ">Add</button>
+                    <div style='font-size: x-small'>('palette' in localstorage)</div>
                 </div>
             </div>
         `;

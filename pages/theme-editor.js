@@ -284,6 +284,7 @@
           ${faces.length} faces found
           ${Object.keys(currentColors.groupMappings || {}).length > 0 ? ` (${Object.keys(currentColors.groupMappings).length} groups)` : ''}
         </div>
+        <div style='font-size: x-small'>('palette' and 'theme' in localstorage)</div>
         <div style="max-height: 60vh; overflow-y: auto;">
           ${faces.sort((a, b) => {
       if (a === "default") return -1;
