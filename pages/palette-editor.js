@@ -1,13 +1,26 @@
 // palette-swatches.js
 
-
-
 (function () {
   'use strict';
+
+  window.toast = (text) => {
+    Toastify({
+      text: text,
+      gravity: 'bottom',
+      position: 'center',
+      duration: 3000,
+      style: {
+        background: '#111',
+        border: '1px solid #444',
+        borderRadius: '1em',
+      }
+    }).showToast()
+  }
 
   window.copyText = (text) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text);
+      toast(`${text}\ncopied to clipboard`)
     } else {
       alert(text);
     }
