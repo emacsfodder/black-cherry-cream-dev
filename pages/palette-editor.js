@@ -13,7 +13,13 @@
     }
   }
 
-  const paletteHeaderClasses = `
+  window.saveLocationNote = `<div class="text-[9pt] font-[Inter]">Saved in <code>localstorage</code> as <code>"palette"</code> and to clipboard</div>`
+
+  window.headingClasses = `
+  font-[Inter] text-lg text-[#FFF]} flex flex-row gap-2 items-center
+  `
+
+  window.paletteHeaderClasses = `
     palette-header
     bg-[#2a2a2a]
     py-2 px-3
@@ -26,11 +32,11 @@
     items-center
   `
 
-  const ghostButton = `
+  window.ghostButton = `
   text-[white] cursor-pointer
   `
 
-  const buttonTailwind = `
+  window.buttonTailwind = `
     hover:bg-[#111]
     transition-color
     duration-500
@@ -41,8 +47,9 @@
     cursor-pointer
     font-[Inter]
   `
+  window.buttonTailwindRed = buttonTailwind.replace('111', '400').replace('333', '800')
 
-  const paletteIcon = `
+  window.paletteIcon = `
     <svg xmlns="http://www.w3.org/2000/svg"
       width="16" height="16"
       viewBox="0 0 24 24"
@@ -59,7 +66,7 @@
     </svg>
   `
 
-  const copyIcon = `
+  window.copyIcon = `
     <svg xmlns="http://www.w3.org/2000/svg"
          width="16" height="16"
          viewBox="0 0 24 24"
@@ -73,7 +80,7 @@
     </svg>
   `
 
-  const trashIcon = `
+  window.trashIcon = `
     <svg xmlns="http://www.w3.org/2000/svg"
       width="16" height="16"
       viewBox="0 0 24 24"
@@ -89,7 +96,7 @@
         <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
     </svg>
   `
-  const minusIcon = `
+  window.minusIcon = `
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus-icon lucide-minus"><path d="M5 12h14"/></svg>
   `
 
@@ -539,7 +546,7 @@
 
     container.innerHTML = `
             <div class="${paletteHeaderClasses}">
-                <div class="font-[Inter] text-lg text-[#FFF]} flex flex-row gap-2 items-center">${paletteIcon} Palette Editor</div>
+                <div class="${headingClasses}">${paletteIcon} Palette Editor</div>
                 <div class="${buttonTailwind}"
                   onclick='togglePaletteContent()'
                 >${minusIcon}</div>
@@ -551,13 +558,15 @@
                     gap: 5px;
                     margin-bottom: 10px;
                 "></div>
-                <div class="flex flex-row gap-2">
+                <div class="flex flex-row gap-2 my-2">
                     <div onclick="window.showImportDialog()"
-                    class="${buttonTailwind}">Import/Load/Save</div>
+                    class="${buttonTailwind}">Import</div>
+                    <div onclick="window.savePaletteLocalData()"
+                    class="${buttonTailwind}">Save</div>
                     <div onclick="window.addSwatch()"
                     class="${buttonTailwind}">Add</div>
                 </div>
-                <div class="text-[8pt] font-[Inter]">Saved in localstorage as <span class="font-mono">"palette"</span></div>
+                ${saveLocationNote}
             </div>
         `;
 
@@ -568,21 +577,20 @@
 
   function showImportDialog() {
     const dialog = document.createElement('div');
-    dialog.style.cssText = `
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #1a1a1a;
-            border: 1px solid #333;
-            padding: 20px;
-            z-index: 10002;
-            border-radius: 5px;
-            color: #fff;
+    dialog.className = `
+            fixed
+            top-[50%] left-[50%]
+            bg-[#1a1a1a]
+            border-1 border-[#333]
+            p-2
+            zindex-[10002]
+            rounded-xl
+            text-[white]
         `;
+    dialog.style.cssText = `transform: translate(-50%, -50%);`
 
     dialog.innerHTML = `
-            <h3 style="margin: 0 0 10px 0;">Import Palette</h3>
+            <div class="${headingClasses} mb-1">Import/Copy Palette</div>
             <textarea id="palette-import-text" style="
                 width: 400px;
                 height: 200px;
@@ -592,12 +600,21 @@
                 padding: 10px;
                 font-family: monospace;
             " placeholder="Paste your palette array here...">${JSON.stringify(currentPalette, null, 2)}</textarea>
-            <div style="margin-top: 10px; display: flex; gap: 5px;">
-                <button onclick="window.importFromTextarea()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Import</button>
-	              <button onclick="window.loadPaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Load</button>
-	              <button onclick="window.savePaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Save</button>
-	              <button onclick="this.parentElement.parentElement.remove()" style="background: #ff4444; color: #fff; border: none; padding: 5px 10px; cursor: pointer;">Close</button>
+            <div class="my-2 flex flex-row gap-2">
+                <div onclick="window.importFromTextarea()"
+                class="${buttonTailwind}"
+                >Import</div>
+	              <div onclick="window.loadPaletteLocalData()"
+                class="${buttonTailwind}"
+                >Load</div>
+	              <div onclick="window.savePaletteLocalData()"
+                class="${buttonTailwind}"
+                >Save</div>
+	              <div onclick="this.parentElement.parentElement.remove()"
+                class="${buttonTailwindRed}"
+                >Close</div>
             </div>
+            ${saveLocationNote}
         `;
 
     document.body.appendChild(dialog);
@@ -612,7 +629,7 @@
   window.savePaletteLocalData = function () {
     const jsonPalette = JSON.stringify(currentPalette, null, 2);
     localStorage.setItem('palette', jsonPalette);
-    // alert('Saved palette to local storage');
+    copyText(jsonPalette);
   }
 
   window.loadPaletteLocalData = function () {

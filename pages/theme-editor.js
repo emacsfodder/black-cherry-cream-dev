@@ -2,6 +2,12 @@
 (function () {
   'use strict';
 
+  const palettePickerClasses = `
+  bg-[#1a1a1a] border-1 border-[#333] p-2 rounded-lg shadow-xl absolute
+  `
+
+  window.closeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`
+
   let currentPaletteTarget = null;
 
   // Show palette modal
@@ -14,7 +20,7 @@
     // Position near the clicked swatch
     const rect = currentSwatch.getBoundingClientRect();
     palettePicker.style.left = (rect.right + 10) + 'px';
-    palettePicker.style.top = (rect.top) + 'px';
+    palettePicker.style.top = (Math.min(380, rect.top)) + 'px';
     palettePicker.style.display = 'block';
   };
 
@@ -190,26 +196,31 @@
   function createPalettePicker(paletteColors) {
     const palettePicker = document.createElement('div');
     palettePicker.id = 'palette-picker';
-    palettePicker.style.zIndex = 9999;
     palettePicker.innerHTML = `
-      <div style="background: #222; border: 1px solid #444; padding: 10px; border-radius: 5px; box-shadow: 0 4px 8px rgba(0,0,0,0.5); position: absolute;">
-        <div style="display: flex; flex-wrap: wrap; gap: 4px; min-width: 250px; max-width: 300px;">
-          ${paletteColors.map(paletteItem => `
-            <div class="palette-swatch"
-                 style="width: 20px; height: 20px; background: ${paletteItem.color}; border: 1px solid #666; cursor: pointer;"
-                 title="${paletteItem.name}"
-                 onclick="window.setColorFromPalette('${paletteItem.color}')">
-            </div>
-          `).join('')}
-        </div>
-        <div style="text-align: center; margin-top: 8px;">
-          <button onclick="window.hidePalette()" style="font-size: 10px; padding: 2px 8px;">Close</button>
-        </div>
+    <div class="${palettePickerClasses}">
+    <div >
+    <div
+    onclick="window.hidePalette()"
+    class="cursor-pointer absolute bg-[#111] p-1 rounded-full shadow-xl
+    absolute top-[-25] right-[-23] border-1 border-[#777]"
+    >${closeIcon}</div>
+    </div>
+    <div class="flex flex-wrap gap-1 w-[16em]">
+    ${paletteColors.map(paletteItem => `
+      <div class="palette-swatch"
+      style="width: 20px; height: 20px; background: ${paletteItem.color}; border: 1px solid #666; cursor: pointer;"
+      title="${paletteItem.name}"
+      onclick="window.setColorFromPalette('${paletteItem.color}')">
       </div>
-    `;
-    palettePicker.style.display = 'none';
-    palettePicker.style.position = 'fixed';
-    return palettePicker;
+      `).join('')}
+      </div>
+      </div>
+      `;
+      palettePicker.style.display = 'none';
+      palettePicker.style.zIndex = 9999;
+      palettePicker.style.position = 'fixed';
+
+      return palettePicker;
   }
 
   function createColorSwatches(faceName, currentColor, property, paletteColors) {
@@ -264,27 +275,39 @@
       }
     }
 
+
     const editor = document.createElement('div');
     editor.id = 'theme-editor';
     editor.innerHTML = `
-      <div style="position: fixed; top: 10px; right: 10px; background: #090909; border: 1px solid #222; padding: 15px; max-height: 80vh; overflow-y: auto; font-family: Arial, sans-serif; font-size: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); border-radius: 25px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-          <h3 style="margin: 0;">🎨 Theme Editor</h3>
-          <div style="font-size: 10px; color: #aaa;">
+      <div class="fixed top-1 right-1 bg-[#222] p-3 rounded-xl border-[#333] border-1">
+        <div class="flex justify-between items-center mb-2 gap-2">
+          <div class="${headingClasses}">${paletteIcon} Theme Editor</div>
+          <div class="font-[10px] text-[#aaa]">
             ${paletteColors.length} colors in palette
           </div>
         </div>
-        <div style="margin-bottom: 10px;">
-          <button onclick="window.exportTheme()" style="margin-right: 5px; padding: 4px 8px;">Export Theme</button>
-          <button onclick="window.importTheme()" style="padding: 4px 8px;">Import Theme</button>
-          <button onclick="window.saveThemeLocalData()" style="margin-right: 5px; padding: 4px 8px;">Save Theme</button>
-          <button onclick="window.loadThemeLocalData()" style="padding: 4px 8px;">Load Theme</button>
+        <div class="flex items-center justify-start gap-2">
+          <div
+            class="${buttonTailwind}"
+            onclick="window.exportTheme()"
+            >Export Theme</div>
+          <div
+            class="${buttonTailwind}"
+            onclick="window.importTheme()"
+            >Import Theme</div>
+          <div
+            class="${buttonTailwind}"
+            onclick="window.saveThemeLocalData()"
+            >Save Theme</div>
+          <div
+            class="${buttonTailwind}"
+            onclick="window.loadThemeLocalData()"
+            >Load Theme</div>
         </div>
         <div style="font-size: 11px; color: #aaa; margin-bottom: 10px;">
           ${faces.length} faces found
           ${Object.keys(currentColors.groupMappings || {}).length > 0 ? ` (${Object.keys(currentColors.groupMappings).length} groups)` : ''}
         </div>
-        <div style='font-size: x-small'>('palette' and 'theme' in localstorage)</div>
         <div style="max-height: 60vh; overflow-y: auto;">
           ${faces.sort((a, b) => {
       if (a === "default") return -1;
@@ -310,6 +333,8 @@
             `;
         }).join('')}
         </div>
+        <div class="text-[9pt] font-[Inter] mt-2">Save/Load via <code>localstorage</code> as <code>"theme"</code></div>
+        <div class="text-[9pt] font-[Inter]">Active palette read from <code>localstorage</code> as <code>"palette"</code></div>
       </div>
     `;
 
