@@ -1,0 +1,58 @@
+{
+  "default": {
+    "color": "#ffdce3",
+    "background": "#130000"
+  },
+  "rainbow-delimiters-depth-6-face": {
+    "color": "#e00064",
+    "background": "#11111100"
+  },
+  "rainbow-delimiters-depth-5-face": {
+    "color": "#ff5c8b",
+    "background": "#11111100"
+  },
+  "rainbow-delimiters-depth-4-face": {
+    "color": "#ffa3b7",
+    "background": "#11111100"
+  },
+  "rainbow-delimiters-depth-3-face": {
+    "color": "#e00064",
+    "background": "#11111100"
+  },
+  "comment": {
+    "color": "#7D2225",
+    "background": "#11111100"
+  },
+  "rainbow-delimiters-depth-2-face": {
+    "color": "#ff5c8b",
+    "background": "#11111100"
+  },
+  "constant": {
+    "color": "#ff5c8b",
+    "background": "#11111100"
+  },
+  "variable-name": {
+    "color": "#ff5c8b",
+    "background": "#11111100"
+  },
+  "string": {
+    "color": "#e00064",
+    "background": "#11111100"
+  },
+  "number": {
+    "color": "#ffa3b7",
+    "background": "#11111100"
+  },
+  "rainbow-delimiters-depth-1-face": {
+    "color": "#ffa3b7",
+    "background": "#11111100"
+  },
+  "builtin": {
+    "color": "#ffa3b7",
+    "background": "#11111100"
+  },
+  "keyword": {
+    "color": "#e00064",
+    "background": "#11111100"
+  }
+}
