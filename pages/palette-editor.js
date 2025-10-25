@@ -22,7 +22,7 @@
       navigator.clipboard.writeText(text);
       toast(`${text}\ncopied to clipboard`)
     } else {
-      alert(text);
+      toast(`${text}\nCannot be copied\n*requires HTTPS/SSL for clipboard access/`);
     }
   }
 
@@ -643,11 +643,11 @@
         const textarea = document.getElementById('palette-import-text')
         textarea.textContent = JSON.stringify(currentPalette, null, 2);
         renderPalette();
-        // alert('Loaded palette from local storage')
+        toast('Loaded palette from local storage')
       }
 
     } catch (e) {
-      alert(`Invalid palette format: ${e.message}`)
+      toast(`Invalid palette format: ${e.message}`)
     }
   }
 
@@ -660,7 +660,7 @@
         renderPalette();
       }
     } catch (e) {
-      alert('Invalid palette format: ' + e.message);
+      toast('Invalid palette format: ' + e.message);
     }
   };
 

@@ -261,7 +261,7 @@
     console.log('Using palette:', paletteColors);
 
     if (faces.length === 0) {
-      alert('No CSS classes found in embedded styles. Check console for details.');
+      toast('No CSS classes found in embedded styles. Check console for details.');
       return;
     }
 
@@ -288,9 +288,9 @@
         </div>
         <div class="flex items-center justify-start gap-2">
           <div
-            class="${buttonTailwind}"
+            class="${buttonTailwind} flex flex-row items-center gap-2"
             onclick="window.exportTheme()"
-            >Export Theme</div>
+            >${copyIcon} Copy Theme</div>
           <div
             class="${buttonTailwind}"
             onclick="window.importTheme()"
@@ -365,23 +365,23 @@
     const { currentColors } = extractFacesFromStyleTags();
     const themeData = JSON.stringify(currentColors, null, 2);
     localStorage.setItem('theme', themeData);
-    alert('Theme saved to localStorage!');
+    toast('Theme saved to localStorage!');
   }
 
   function loadThemeLocalData() {
     const themeJson = localStorage.getItem('theme');
     if (!themeJson) {
-      alert('No saved theme found in localStorage.');
+      toast('No saved theme found in localStorage.');
       return;
     }
-    parseTheme(themeJson, alert);
+    parseTheme(themeJson, toast);
   }
 
   // Export/Import functions...
   function exportTheme() {
     const { currentColors } = extractFacesFromStyleTags();
     const themeData = JSON.stringify(currentColors, null, 2);
-    alert('Theme data:\n\n' + themeData);
+    copyText(themeData)
   }
 
   function importTheme() {
