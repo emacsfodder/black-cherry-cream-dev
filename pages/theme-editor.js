@@ -80,10 +80,10 @@
 
         // Extract color and background-color
         const colorMatch = properties.match(/color:\s*([^;]+)/i);
-        const bgMatch = properties.match(/background-color:\s*([^;]+)/i);
+        const bgMatch = properties.match(/background:\s*([^;]+)/i);
 
         const color = colorMatch ? colorMatch[1].trim() : '';
-        const backgroundColor = bgMatch ? bgMatch[1].trim() : '';
+        const background = bgMatch ? bgMatch[1].trim() : '';
 
         // Check if this is an auto-generated padded-number class
         const paddedNumberMatch = faceName.match(/-\d+$/);
@@ -106,11 +106,11 @@
         // Store colors with both actual and display names
         currentColors[faceName] = {
           color: color,
-          backgroundColor: backgroundColor
+          background: background
         };
         currentColors[displayName] = {
           color: color,
-          backgroundColor: backgroundColor
+          background: background
         };
       }
     });
@@ -146,10 +146,10 @@
     if ((faceName === 'default' || groupMappings['default']?.includes(faceName)) && updated) {
       if (property === 'color') {
         document.body.style.color = value;
-        document.querySelectorAll('pre').forEach((e)=>e.style.color = value)
-      } else if (property === 'backgroundColor') {
-        document.body.style.backgroundColor = value;
-        document.querySelectorAll('pre').forEach((e)=>e.style.backgroundColor = value)
+        document.querySelectorAll('pre').forEach((e) => e.style.color = value)
+      } else if (property === 'background') {
+        document.body.style.background = value;
+        document.querySelectorAll('pre').forEach((e) => e.style.background = value)
       }
     }
 
@@ -216,11 +216,11 @@
       </div>
       </div>
       `;
-      palettePicker.style.display = 'none';
-      palettePicker.style.zIndex = 9999;
-      palettePicker.style.position = 'fixed';
+    palettePicker.style.display = 'none';
+    palettePicker.style.zIndex = 9999;
+    palettePicker.style.position = 'fixed';
 
-      return palettePicker;
+    return palettePicker;
   }
 
   function createColorSwatches(faceName, currentColor, property, paletteColors) {
@@ -270,8 +270,8 @@
       if (currentColors.default.color) {
         document.body.style.color = currentColors.default.color;
       }
-      if (currentColors.default.backgroundColor) {
-        document.body.style.backgroundColor = currentColors.default.backgroundColor;
+      if (currentColors.default.background) {
+        document.body.style.background = currentColors.default.background;
       }
     }
 
@@ -318,16 +318,19 @@
           const groupMappings = currentColors.groupMappings || {};
           const isGrouped = groupMappings[face];
           const isDefault = face === 'default' || groupMappings['default']?.includes(face);
+          const displayName = Object.keys(window.mapFontLockCssToEmacsFace)
+            .includes(face)
+            ? window.mapFontLockCssToEmacsFace[face] : face
 
           return `
               <div style="margin: 12px 0; padding: 8px; border-bottom: 1px solid #333; background: #111; ${isDefault ? 'border-left: 3px solid #4CAF50;' : ''}">
                 <div style="font-weight: bold; margin-bottom: 8px; font-size: 13px;">
-                  ${face}
+                  ${displayName}
                   ${isGrouped ? ` <span style="color: #FF9800; font-size: 10px;">group</span>` : ''}
                 </div>
                 <div style="display: flex; gap: 15px;">
                   ${createColorSwatches(face, currentColors[face]?.color, 'color', paletteColors)}
-                  ${createColorSwatches(face, currentColors[face]?.backgroundColor, 'backgroundColor', paletteColors)}
+                  ${createColorSwatches(face, currentColors[face]?.background, 'background', paletteColors)}
                 </div>
               </div>
             `;
@@ -350,7 +353,7 @@
       const theme = JSON.parse(themeJson);
       Object.entries(theme).forEach(([faceName, colors]) => {
         if (colors.color) updateFaceColor(faceName, 'color', colors.color);
-        if (colors.backgroundColor) updateFaceColor(faceName, 'backgroundColor', colors.backgroundColor);
+        if (colors.background) updateFaceColor(faceName, 'background', colors.background);
       });
       reporter('Theme imported!');
     } catch (e) {
@@ -400,6 +403,34 @@
   }
 
   // Make global
+  window.mapFontLockCssToEmacsFace = {
+    "warning": "font-lock-warning-face",
+    "function-name": "font-lock-function-name-face",
+    "function-call": "font-lock-function-call-face",
+    "variable-name": "font-lock-variable-name-face",
+    "variable-use": "font-lock-variable-use-face",
+    "keyword": "font-lock-keyword-face",
+    "comment": "font-lock-comment-face",
+    "comment-delimiter": "font-lock-comment-delimiter-face",
+    "type": "font-lock-type-face",
+    "constant": "font-lock-constant-face",
+    "builtin": "font-lock-builtin-face",
+    "preprocessor": "font-lock-preprocessor-face",
+    "string": "font-lock-string-face",
+    "doc": "font-lock-doc-face",
+    "doc-markup": "font-lock-doc-markup-face",
+    "negation-char": "font-lock-negation-char-face",
+    "escape": "font-lock-escape-face",
+    "number": "font-lock-number-face",
+    "operator": "font-lock-operator-face",
+    "property-name": "font-lock-property-name-face",
+    "property-use": "font-lock-property-use-face",
+    "punctuation": "font-lock-punctuation-face",
+    "bracket": "font-lock-bracket-face",
+    "delimiter": "font-lock-delimiter-face",
+    "misc-punctuation": "font-lock-misc-punctuation-face",
+  }
+
   window.extractFacesFromStyleTags = extractFacesFromStyleTags;
   window.updateFaceColor = updateFaceColor;
   window.exportTheme = exportTheme;
