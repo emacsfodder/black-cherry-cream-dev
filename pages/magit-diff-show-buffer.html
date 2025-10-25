@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
     <title>magit-diff-show-buffer</title>
 <meta name="generator" content="emacs 30.2; htmlfontify" />
-<style type="text/css"><!-- 
+<style type="text/css"><!--
 body, pre { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
 span.default   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
 span.default a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
@@ -149,7 +149,7 @@ Contained:  <span class="magit-branch-local">main</span>
 <span class="magit-diff-file-heading">modified   .github/workflows/pages.yaml</span>
 <span class="magit-diff-hunk-heading-highlight-0004">@@ -15,10 +15,27 @@ jobs:</span><span class="magit-diff-hunk-heading-highlight-0004">
 </span><span class="magit-diff-context-highlight">         uses: actions/checkout@v4
-         
+
        - name: Buid Dist
 </span><span class="magit-diff-added-highlight">+        env:</span><span class="magit-diff-whitespace-warning-0013"> </span><span class="magit-diff-added-highlight">
 +          GITHUB_TOKEN: ${secrets.GITHUB_TOKEN}
@@ -173,12 +173,13 @@ Contained:  <span class="magit-branch-local">main</span>
 +
 +          rm -rf temp
 +</span><span class="magit-diff-whitespace-warning-0013">          </span><span class="magit-diff-added-highlight">
-</span><span class="magit-diff-context-highlight">           
-         
-   
+</span><span class="magit-diff-context-highlight">
+
+
 </span>
 </pre>
-        <script src='theme-editor.js' ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src='theme-editor.js' ></script>
     <script src='palette-editor.js' ></script>
  </body>
 </html>

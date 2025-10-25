@@ -1,6 +1,97 @@
 // palette-swatches.js
+
+
+
 (function () {
   'use strict';
+
+  window.copyText = (text) => {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text);
+    } else {
+      alert(text);
+    }
+  }
+
+  const paletteHeaderClasses = `
+    palette-header
+    bg-[#2a2a2a]
+    py-2 px-3
+    border-b-1 border-[#333]
+    cursor-move
+    flex
+    min-width-[20em]
+    justify-between
+    rounded-t-xl
+    items-center
+  `
+
+  const ghostButton = `
+  text-[white] cursor-pointer
+  `
+
+  const buttonTailwind = `
+    hover:bg-[#111]
+    transition-color
+    duration-500
+    bg-[#333] text-[#FFF]
+    border-1 border-[#555]
+    p-2
+    rounded
+    cursor-pointer
+    font-[Inter]
+  `
+
+  const paletteIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg"
+      width="16" height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1"
+      stroke-linecap="round"
+      stroke-linejoin="round">
+        <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z"/>
+        <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+        <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+        <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+        <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+    </svg>
+  `
+
+  const copyIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg"
+         width="16" height="16"
+         viewBox="0 0 24 24"
+         fill="none"
+         stroke="currentColor"
+         stroke-width="1"
+         stroke-linecap="round"
+         stroke-linejoin="round">
+         <rect width="14" height="14" x="8" y="8" rx="2" ry="2"/>
+         <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/>
+    </svg>
+  `
+
+  const trashIcon = `
+    <svg xmlns="http://www.w3.org/2000/svg"
+      width="16" height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      >
+        <path d="M10 11v6"/><path d="M14 11v6"/>
+        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+        <path d="M3 6h18"/>
+        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+    </svg>
+  `
+  const minusIcon = `
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-minus-icon lucide-minus"><path d="M5 12h14"/></svg>
+  `
 
   const defaultPalette = [
     {
@@ -160,14 +251,6 @@
       "name": "cherry-bright-darker-60%"
     },
     {
-      "color": "#FFFFFF",
-      "name": "cream-bright-lighter-30%"
-    },
-    {
-      "color": "#FFFFFF",
-      "name": "cream-bright-lighter-60%"
-    },
-    {
       "color": "#F7E3C1",
       "name": "cream-bright-upsat-30%"
     },
@@ -194,10 +277,6 @@
     {
       "color": "#FCFBFA",
       "name": "cream-clotted-lighter-30%"
-    },
-    {
-      "color": "#FFFFFF",
-      "name": "cream-clotted-lighter-60%"
     },
     {
       "color": "#D5C2AD",
@@ -258,10 +337,6 @@
     {
       "color": "#FBF9F3",
       "name": "cream-custard-lighter-30%"
-    },
-    {
-      "color": "#FFFFFF",
-      "name": "cream-custard-lighter-60%"
     },
     {
       "color": "#EDCF8F",
@@ -365,41 +440,33 @@
 
   function createSwatch(color, name, index) {
     const swatch = document.createElement('div');
-    swatch.className = 'palette-swatch';
-    swatch.style.cssText = `
-            width: 30px;
-            height: 30px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        `;
-
+    swatch.className = 'palette-swatch w-8 h-8 relative flex items-center justify-center';
     swatch.innerHTML = `
             <input type="color"
                    value="${color}"
                    onchange="window.updateSwatchColor(${index}, this.value)"
-                   style="
-                       width: 100%;
-                       height: 100%;
-                       border: 1px solid #333;
-                       cursor: pointer;
-                       padding: 0;
-                       margin: 0;
-                       border-radius: 0;
+                   class="
+                       w-full h-full border-1 border-[#333] cursor-pointer p-0 m-0
                    ">
-            <div class="swatch-controls" style="
-                position: absolute;
-                top: -20px;
-                background: #1a1a1a;
-                border: 1px solid #333;
-                padding: 2px;
-                border-radius: 3px;
-                display: none;
-                gap: 2px;
-            ">
-            <button onclick="window.deleteSwatch(${index})" style="background: none; border: none; color: #fff; cursor: pointer;">🗑️</button>
-            ${color}
+            <div class="
+                     swatch-controls
+                     flex flex-row gap-2
+                     px-2 py-1 rounded-lg
+                     hidden
+                     absolute
+                     top-[-30px]
+                     right-2
+                     bg-[#242424] border-1 border-[#333]
+                 ">
+              <div style="font-size: small">
+                ${color}
+              </div>
+              <div onclick="window.deleteSwatch(${index})" class="${ghostButton}">
+                ${trashIcon}
+              </div>
+              <div  onclick="copyText('${color}')" class="${ghostButton}">
+                ${copyIcon}
+              </div>
             </div>
         `;
 
@@ -432,7 +499,6 @@
       const rect = container.getBoundingClientRect();
       dragOffset.x = e.clientX - rect.left;
       dragOffset.y = e.clientY - rect.top;
-      container.style.cursor = 'grabbing';
     }
 
     function onDrag(e) {
@@ -444,7 +510,6 @@
 
     function stopDrag() {
       isDragging = false;
-      container.style.cursor = 'grab';
     }
   }
 
@@ -461,34 +526,23 @@
   function createPaletteContainer() {
     const container = document.createElement('div');
     container.id = 'palette-swatches';
-    container.style.cssText = `
-            position: fixed;
-            background: #1a1a1a;
-            border: 1px solid #333;
-            padding: 0;
-            z-index: 10001;
-            border-radius: 5px;
-            cursor: grab;
-            user-select: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.6);
-        `;
+    container.className = `
+      fixed
+      rounded-xl
+      bg-[#1a1a1a]
+      border-1
+      border-[#333]
+      p-0
+      zindex-[10001]
+      shadow-xl
+    `
 
     container.innerHTML = `
-            <div class="palette-header" style="
-                background: #2a2a2a;
-                padding: 8px 10px;
-                border-bottom: 1px solid #333;
-                cursor: grab;
-                display: flex;
-                min-width: 20em;
-                justify-content: space-between;
-                align-items: center;
-            ">
-                <span style="color: #fff; font-weight: bold;">🎨 Palette Editor</span>
-                <span
-                  style='background-color: #FFF2; padding: 5px 14px;'
+            <div class="${paletteHeaderClasses}">
+                <div class="font-[Inter] text-lg text-[#FFF]} flex flex-row gap-2 items-center">${paletteIcon} Palette Editor</div>
+                <div class="${buttonTailwind}"
                   onclick='togglePaletteContent()'
-                >-</span>
+                >${minusIcon}</div>
             </div>
             <div id='palette-content' class="palette-content" style="padding: 10px;">
                 <div class="palette-swatches-grid" style="
@@ -497,25 +551,13 @@
                     gap: 5px;
                     margin-bottom: 10px;
                 "></div>
-                <div style="display: flex; gap: 5px;">
-                    <button onclick="window.showImportDialog()" style="
-                        background: #333;
-                        color: #fff;
-                        border: 1px solid #555;
-                        padding: 5px 10px;
-                        cursor: pointer;
-                        flex: 1;
-        ">Import/Load/Save</button>
-                    <button onclick="window.addSwatch()" style="
-                        background: #333;
-                        color: #fff;
-                        border: 1px solid #555;
-                        padding: 5px 10px;
-                        cursor: pointer;
-                        flex: 1;
-                    ">Add</button>
-                    <div style='font-size: x-small'>('palette' in localstorage)</div>
+                <div class="flex flex-row gap-2">
+                    <div onclick="window.showImportDialog()"
+                    class="${buttonTailwind}">Import/Load/Save</div>
+                    <div onclick="window.addSwatch()"
+                    class="${buttonTailwind}">Add</div>
                 </div>
+                <div class="text-[8pt] font-[Inter]">Saved in localstorage as <span class="font-mono">"palette"</span></div>
             </div>
         `;
 
@@ -537,7 +579,6 @@
             z-index: 10002;
             border-radius: 5px;
             color: #fff;
-            cursor: default;
         `;
 
     dialog.innerHTML = `
@@ -553,10 +594,9 @@
             " placeholder="Paste your palette array here...">${JSON.stringify(currentPalette, null, 2)}</textarea>
             <div style="margin-top: 10px; display: flex; gap: 5px;">
                 <button onclick="window.importFromTextarea()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Import</button>
-
-	    <button onclick="window.loadPaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Load</button>
-	    <button onclick="window.savePaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Save</button>
-	                <button onclick="this.parentElement.parentElement.remove()" style="background: #ff4444; color: #fff; border: none; padding: 5px 10px; cursor: pointer;">Close</button>
+	              <button onclick="window.loadPaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Load</button>
+	              <button onclick="window.savePaletteLocalData()" style="background: #333; color: #fff; border: 1px solid #555; padding: 5px 10px; cursor: pointer;">Save</button>
+	              <button onclick="this.parentElement.parentElement.remove()" style="background: #ff4444; color: #fff; border: none; padding: 5px 10px; cursor: pointer;">Close</button>
             </div>
         `;
 
