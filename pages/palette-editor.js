@@ -54,10 +54,14 @@
     transition-color
     duration-500
     bg-[#333] text-[#FFF]
-    border-1 border-[#555]
-    p-2
-    rounded
+    px-3 py-1
+    rounded-full
+    flex
+    flex-row
+    items-center
+    justify-between
     cursor-pointer
+    text-center
     font-[Inter]
   `
   window.buttonTailwindRed = buttonTailwind.replace('111', '400').replace('333', '800')
@@ -541,6 +545,7 @@
   function createPaletteContainer() {
     const container = document.createElement('div');
     container.id = 'palette-swatches';
+    container.style.color = '#FFFFFF;'
     container.className = `
       fixed
       rounded-xl
@@ -556,13 +561,13 @@
     `
 
     container.innerHTML = `
-            <div class="${paletteHeaderClasses}">
+            <div class="${paletteHeaderClasses}" style="color: #FFFFFF">
                 <div class="${headingClasses}">${paletteIcon} Palette Editor</div>
                 <div class="${buttonTailwind}"
                   onclick='togglePaletteContent()'
                 >${minusIcon}</div>
             </div>
-            <div id='palette-content' class="palette-content" style="padding: 10px;" hidden>
+            <div id='palette-content' class="palette-content" style="padding: 10px; color: #FFFFFF" hidden>
                 <div class="palette-swatches-grid grid grid-cols-8 gap-1"></div>
                 <div class="flex flex-row gap-2 my-2">
                     <div onclick="window.showImportDialog()"

@@ -3,7 +3,7 @@
   'use strict';
 
   const palettePickerClasses = `
-  bg-[#1a1a1a] border-1 border-[#333] p-2 rounded-lg shadow-xl absolute
+  relative
   `
 
   window.closeIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`
@@ -20,7 +20,7 @@
     // Position near the clicked swatch
     const rect = currentSwatch.getBoundingClientRect();
     palettePicker.style.left = (rect.right + 10) + 'px';
-    palettePicker.style.top = (Math.min(380, rect.top)) + 'px';
+    palettePicker.style.top = (Math.min(350, rect.top)) + 'px';
     palettePicker.style.display = 'block';
   };
 
@@ -185,7 +185,12 @@
       const paletteData = localStorage.getItem('palette');
       if (paletteData) {
         const palette = JSON.parse(paletteData);
-        return Array.isArray(palette) ? palette : [];
+        if (Array.isArray(palette)) {
+          palette.push({name: 'transparent', color: '#00000000'})
+          return palette;
+        } else {
+          return []
+        }
       }
     } catch (e) {
       console.error('Error loading palette:', e);
@@ -196,24 +201,28 @@
   function createPalettePicker(paletteColors) {
     const palettePicker = document.createElement('div');
     palettePicker.id = 'palette-picker';
+    palettePicker.className = palettePickerClasses;
+
     palettePicker.innerHTML = `
-    <div class="${palettePickerClasses}">
-    <div >
     <div
-    onclick="window.hidePalette()"
-    class="cursor-pointer absolute bg-[#111] p-1 rounded-full shadow-xl
-    absolute top-[-25] right-[-23] border-1 border-[#777]"
-    >${closeIcon}</div>
-    </div>
-    <div class="flex flex-wrap gap-1 w-[16em]">
-    ${paletteColors.map(paletteItem => `
-      <div class="palette-swatch"
-      style="width: 20px; height: 20px; background: ${paletteItem.color}; border: 1px solid #666; cursor: pointer;"
-      title="${paletteItem.name}"
-      onclick="window.setColorFromPalette('${paletteItem.color}')">
+      onclick="window.hidePalette()"
+      class="
+        absolute top-[-26px] right-[-20px]
+        cursor-pointer rounded-full bg-[#222] p-1
+        border-1 border-[#444]
+      ">
+        ${closeIcon}
       </div>
-      `).join('')}
-      </div>
+      <div class="flex flex-wrap gap-1 w-[16em] bg-[#222] border-[#444] border-1 rounded-lg p-2">
+        ${paletteColors.map(paletteItem => `
+          <div
+              class="palette-swatch"
+              style="width: 20px; height: 20px; background: ${paletteItem.color}; border: 1px solid #666; cursor: pointer;"
+              title="${paletteItem.name}"
+              onclick="window.setColorFromPalette('${paletteItem.color}')">
+          </div>
+          `)
+        .join('')}
       </div>
       `;
     palettePicker.style.display = 'none';
@@ -237,13 +246,13 @@
       <div style="display: flex; align-items: center; gap: 5px;">
         <!-- Current color swatch - click to show palette -->
         <div class="current-swatch"
-             style="width: 30px; height: 30px; background: ${currentColor || '#333'}; border: 2px solid #666; cursor: pointer;"
+             style="width: 30px; height: 30px; background: ${currentColor || '#00000000'}; border: 2px solid #666; cursor: pointer;"
              title="Click to choose color"
              onclick="window.showPalette(this, '${faceName}', '${property}')">
         </div>
       </div>
       <div style="font-size: 9px; color: #888; margin-top: 2px;">
-        Current: <span style="color: ${currentColor}">${currentColor || 'not set'}</span>
+        <span style="color: #FFF">${currentColor || 'not set'}</span>
       </div>
     </div>
   `;
@@ -279,7 +288,7 @@
     const editor = document.createElement('div');
     editor.id = 'theme-editor';
     editor.innerHTML = `
-      <div class="fixed top-1 w-[35vw] right-1 bg-[#222] p-3 rounded-xl border-[#333] border-1">
+      <div class="fixed top-1 w-[35vw] right-1 bg-[#222] p-3 rounded-xl border-[#333] border-1" style="color: #FFFFFF">
         <div class="flex justify-between items-center mb-2 gap-2">
           <div class="${headingClasses}">${paletteIcon} Theme Editor</div>
           <div class="font-[10px] text-[#aaa]">
@@ -318,14 +327,14 @@
           const groupMappings = currentColors.groupMappings || {};
           const isGrouped = groupMappings[face];
           const isDefault = face === 'default' || groupMappings['default']?.includes(face);
-          const displayName = Object.keys(window.mapFontLockCssToEmacsFace)
+          const emacsFaceName = Object.keys(window.mapFontLockCssToEmacsFace)
             .includes(face)
             ? window.mapFontLockCssToEmacsFace[face] : face
 
           return `
               <div style="margin: 12px 0; padding: 8px; border-bottom: 1px solid #333; background: #111; ${isDefault ? 'border-left: 3px solid #4CAF50;' : ''}">
                 <div style="font-weight: bold; margin-bottom: 8px; font-size: 13px;">
-                  ${displayName}
+                  ${emacsFaceName}
                   ${isGrouped ? ` <span style="color: #FF9800; font-size: 10px;">group</span>` : ''}
                 </div>
                 <div style="display: flex; gap: 15px;">
@@ -364,6 +373,7 @@
   function saveThemeLocalData() {
     const { currentColors } = extractFacesFromStyleTags();
     const themeData = JSON.stringify(currentColors, null, 2);
+
     localStorage.setItem('theme', themeData);
     toast('Theme saved to localStorage!');
   }
@@ -379,9 +389,9 @@
 
   // Export/Import functions...
   function exportTheme() {
-    const { currentColors } = extractFacesFromStyleTags();
-    const themeData = JSON.stringify(currentColors, null, 2);
+    const themeData = JSON.stringify(currentThemeData, null, 2);
     copyText(themeData)
+    console.log(themeData)
   }
 
   function importTheme() {
@@ -402,7 +412,50 @@
     createColorEditor();
   }
 
+  // Negate this predicate to remove tailwindClasses
+  function tailwindClassFilter(name) {
+    return window.tailwindClassFilterList.some(
+      (prefix) => name == prefix || name.startsWith(prefix)
+    )
+  }
+
   // Make global
+  window.tailwindClassFilterList = [
+    "absolute",
+    "fixed",
+    "relative",
+    "top-",
+    "right-",
+    "m-",
+    "my-",
+    "mt-",
+    "mb-",
+    "flex",
+    "flex-",
+    "grid",
+    "grid-",
+    "hidden",
+    "h-",
+    "w-",
+    "cursor-move",
+    "cursor-pointer",
+    "items-",
+    "justify-",
+    "gap-",
+    "rounded",
+    "rounded-",
+    "border-",
+    "bg-",
+    "p-",
+    "px-",
+    "py-",
+    "text-",
+    "font-",
+    "shadow-",
+    "duration-",
+    "hover:"
+  ]
+
   window.mapFontLockCssToEmacsFace = {
     "warning": "font-lock-warning-face",
     "function-name": "font-lock-function-name-face",
