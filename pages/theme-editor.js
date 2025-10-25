@@ -279,7 +279,7 @@
     const editor = document.createElement('div');
     editor.id = 'theme-editor';
     editor.innerHTML = `
-      <div class="fixed top-1 right-1 bg-[#222] p-3 rounded-xl border-[#333] border-1">
+      <div class="fixed top-1 w-[35vw] right-1 bg-[#222] p-3 rounded-xl border-[#333] border-1">
         <div class="flex justify-between items-center mb-2 gap-2">
           <div class="${headingClasses}">${paletteIcon} Theme Editor</div>
           <div class="font-[10px] text-[#aaa]">
