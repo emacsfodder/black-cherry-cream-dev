@@ -26,14 +26,14 @@
     border-b-1 border-[#333]
     cursor-move
     flex
-    min-width-[20em]
     justify-between
     rounded-t-xl
     items-center
+    w-[25vw]
   `
 
   window.ghostButton = `
-  text-[white] cursor-pointer
+  text-[#AAA] cursor-pointer hover:text-[#FFF]
   `
 
   window.buttonTailwind = `
@@ -491,11 +491,6 @@
   function makeDraggable(container) {
     const header = container.querySelector('.palette-header');
 
-    // Remove right positioning and set explicit left/top
-    container.style.right = 'auto';
-    container.style.left = (window.innerWidth - 350) + 'px';
-    container.style.top = '100px';
-
     header.addEventListener('mousedown', startDrag);
     document.addEventListener('mousemove', onDrag);
     document.addEventListener('mouseup', stopDrag);
@@ -542,6 +537,9 @@
       p-0
       zindex-[10001]
       shadow-xl
+      top-[5vw]
+      right-[36vw]
+      w-[25vw]
     `
 
     container.innerHTML = `
@@ -551,13 +549,8 @@
                   onclick='togglePaletteContent()'
                 >${minusIcon}</div>
             </div>
-            <div id='palette-content' class="palette-content" style="padding: 10px;">
-                <div class="palette-swatches-grid" style="
-                    display: grid;
-                    grid-template-columns: repeat(8, 30px);
-                    gap: 5px;
-                    margin-bottom: 10px;
-                "></div>
+            <div id='palette-content' class="palette-content" style="padding: 10px;" hidden>
+                <div class="palette-swatches-grid grid grid-cols-8 gap-1"></div>
                 <div class="flex flex-row gap-2 my-2">
                     <div onclick="window.showImportDialog()"
                     class="${buttonTailwind}">Import</div>
@@ -591,19 +584,14 @@
 
     dialog.innerHTML = `
             <div class="${headingClasses} mb-1">Import/Copy Palette</div>
-            <textarea id="palette-import-text" style="
+            <textarea id="palette-import-text bg-[#2a2a3a] text-[#FFF]" style="
                 width: 400px;
-                height: 200px;
-                background: #2a2a2a;
-                color: #fff;
-                border: 1px solid #555;
-                padding: 10px;
-                font-family: monospace;
-            " placeholder="Paste your palette array here...">${JSON.stringify(currentPalette, null, 2)}</textarea>
+                height: 200px;"
+                placeholder="Paste your palette array here...">${JSON.stringify(currentPalette, null, 2)}</textarea>
             <div class="my-2 flex flex-row gap-2">
                 <div onclick="window.importFromTextarea()"
                 class="${buttonTailwind}"
-                >Import</div>
+                >Import From TextArea</div>
 	              <div onclick="window.loadPaletteLocalData()"
                 class="${buttonTailwind}"
                 >Load</div>
