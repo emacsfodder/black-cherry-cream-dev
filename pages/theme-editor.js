@@ -42,6 +42,8 @@
     // Update the color
     window.updateFaceColor(faceName, property, colorValue);
 
+    window.currentThemeData = extractFacesFromStyleTags();
+
     // Update the swatch display
     if (currentSwatch) {
       currentSwatch.style.background = colorValue;
@@ -52,6 +54,10 @@
     if (parent) {
       const currentSpan = parent.querySelector('span');
       if (currentSpan) {
+        /// FIXME: Never
+        console.log('Current swatch Span and color value')
+        console.log(currentSpan)
+        console.log(colorValue)
         currentSpan.textContent = colorValue;
         currentSpan.style.color = colorValue;
       }
@@ -76,6 +82,11 @@
 
       while ((match = ruleRegex.exec(cssText)) !== null) {
         const faceName = match[1].trim();
+
+        if (tailwindClassFilter(faceName)) {
+          continue; // Skip Tailwind classes
+        }
+
         const properties = match[2];
 
         // Extract color and background-color
@@ -186,7 +197,7 @@
       if (paletteData) {
         const palette = JSON.parse(paletteData);
         if (Array.isArray(palette)) {
-          palette.push({name: 'transparent', color: '#00000000'})
+          palette.push({ name: 'transparent', color: 'transparent' })
           return palette;
         } else {
           return []
@@ -246,7 +257,7 @@
       <div style="display: flex; align-items: center; gap: 5px;">
         <!-- Current color swatch - click to show palette -->
         <div class="current-swatch"
-             style="width: 30px; height: 30px; background: ${currentColor || '#00000000'}; border: 2px solid #666; cursor: pointer;"
+             style="width: 30px; height: 30px; background: ${currentColor || 'transparent'}; border-radius: 20px; border: 1px solid #333; cursor: pointer;"
              title="Click to choose color"
              onclick="window.showPalette(this, '${faceName}', '${property}')">
         </div>
@@ -371,9 +382,7 @@
   }
 
   function saveThemeLocalData() {
-    const { currentColors } = extractFacesFromStyleTags();
-    const themeData = JSON.stringify(currentColors, null, 2);
-
+    const themeData = JSON.stringify(window.currentThemeData.currentColors, null, 2);
     localStorage.setItem('theme', themeData);
     toast('Theme saved to localStorage!');
   }
@@ -385,19 +394,31 @@
       return;
     }
     parseTheme(themeJson, toast);
+    window.refreshThemeEditor();
   }
 
-  // Export/Import functions...
   function exportTheme() {
-    const themeData = JSON.stringify(currentThemeData, null, 2);
-    copyText(themeData)
-    console.log(themeData)
+    const themeDataWithEmacsNames = {};
+
+    Object.entries(window.currentThemeData.currentColors).forEach(([cssClassName, colors]) => {
+      if (cssClassName === 'groupMappings') return;
+
+      if (!colors || typeof colors !== 'object' || !('color' in colors || 'background' in colors)) return;
+
+      const emacsFaceName = window.mapFontLockCssToEmacsFace[cssClassName] || cssClassName;
+      themeDataWithEmacsNames[emacsFaceName] = colors;
+    });
+
+    const themeJson = JSON.stringify(themeDataWithEmacsNames, null, 2);
+    copyText(themeJson);
+    console.log(themeJson)
   }
 
   function importTheme() {
     const themeJson = prompt('Paste theme JSON:');
     if (!themeJson) return;
     parseTheme(themeJson, alert)
+    window.refreshThemeEditor();
   }
 
   function refreshEditor() {
@@ -453,7 +474,7 @@
     "font-",
     "shadow-",
     "duration-",
-    "hover:"
+    "hover"
   ]
 
   window.mapFontLockCssToEmacsFace = {
