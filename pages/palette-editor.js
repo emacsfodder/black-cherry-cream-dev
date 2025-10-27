@@ -43,7 +43,7 @@
     justify-between
     rounded-t-xl
     items-center
-    w-[35vw]
+    w-[26vw]
   `
 
   window.ghostButton = `
@@ -473,11 +473,10 @@
 
   function createSwatch(color, name, index) {
     const swatch = document.createElement('div');
-    swatch.className = 'palette-swatch relative flex items-center justify-center';
+    swatch.className = 'palette-swatch w-8 h-8 relative flex items-center justify-center';
     swatch.innerHTML = `
-            <input type="text"
+            <input type="color"
                    value="${color}"
-                   data-coloris
                    onchange="window.updateSwatchColor(${index}, this.value)"
                    class="
                        w-full h-full border-1 border-[#333] cursor-pointer p-0 m-0
@@ -488,13 +487,12 @@
                      px-2 py-1 rounded-lg
                      hidden
                      absolute
-                     top-[-70px]
-                     right-10
+                     top-[-30px]
+                     right-2
                      bg-[#242424] border-1 border-[#333]
                  ">
               <div style="font-size: small">
                 ${color}
-                <span style="font-size: x-small" >${name}</span>
               </div>
               <div onclick="window.deleteSwatch(${index})" class="${ghostButton}">
                 ${trashIcon}
@@ -515,6 +513,7 @@
 
     return swatch;
   }
+
 
   function makeDraggable(container) {
     const header = container.querySelector('.palette-header');
@@ -568,7 +567,7 @@
       shadow-xl
       top-1
       right-[36vw]
-      w-[35vw]
+      w-[26vw]
     `
 
     container.innerHTML = `
@@ -578,8 +577,8 @@
                   onclick='togglePaletteContent()'
                 >${minusIcon}</div>
             </div>
-            <div id='palette-content' class="palette-content w-[35vw]" style="padding: 10px; color: #FFFFFF" hidden>
-                <div class="palette-swatches-grid grid grid-cols-8 gap-1 w-[35vw]"></div>
+            <div id='palette-content' class="palette-content w-[26vw]" style="padding: 10px; color: #FFFFFF" hidden>
+                <div class="palette-swatches-grid grid grid-cols-8 gap-1 w-[25vw]"></div>
                 <div class="flex flex-row gap-2 my-2">
                     <div onclick="window.showImportDialog()"
                     class="${buttonTailwind}">Import</div>
@@ -639,82 +638,13 @@
     document.body.appendChild(dialog);
   }
 
-  // Inject Coloris
-  const colorisLink = document.createElement('link');
-  colorisLink.rel = 'stylesheet';
-  colorisLink.href = 'https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css';
-
-  const colorisScript = document.createElement('script');
-  colorisScript.src = 'https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js'
-
-  document.head.appendChild(colorisLink)
-  document.head.appendChild(colorisScript)
-
-  // Add this to your initialization code, right after Coloris is loaded
-  const colorisOverrideStyles = document.createElement('style');
-  colorisOverrideStyles.textContent = `
-    /* Target Coloris-generated structure specifically for palette swatches */
-    .palette-swatch .clr-field {
-      width: 2em;
-      height: 2em;
-    }
-
-    .palette-swatch .clr-field button {
-      width: 100% !important;
-      height: 100% !important;
-      border: 1px solid #333 !important;
-      border-radius: 0.25rem !important;
-      background: transparent !important;
-      margin: 0 !important;
-      padding: 0 !important;
-      min-width: auto !important;
-      min-height: auto !important;
-    }
-
-    .palette-swatch .clr-field input {
-      display:  !important;
-      opacity: 0 !important;
-      position: absolute !important;
-
-    }
-
-    /* Ensure the clr-field doesn't interfere with your popover */
-    .palette-swatch .clr-field {
-      z-index: 1 !important;
-    }
-
-    .palette-swatch .swatch-controls {
-      z-index: 10 !important;
-    }
-  `;
-
-  // Inject the styles - you might want to add this after Coloris is loaded
-  document.head.appendChild(colorisOverrideStyles);
-
-  setTimeout(() => {
-    Coloris({
-      theme: 'pill',
-      themeMode: 'auto',
-      formatToggle: true,
-      onChange: (color, inputEl) => {
-        console.log(`The new color is ${color}`);
-      }
-    });
-  }, 2000)
-
   // Public API
   window.updateSwatchColor = function (index, newColor) {
-  currentPalette[index].color = newColor;
+    currentPalette[index].color = newColor;
 
-  // Update the visual color of the button
-  const swatch = document.querySelectorAll('.palette-swatch')[index];
-  const colorButton = swatch.querySelector('.clr-field button');
-  if (colorButton) {
-    colorButton.style.backgroundColor = newColor;
-  }
-
-  // Coloris should handle updating the input value and its internal state
-};
+    // Update the visual color of the button
+    const swatch = document.querySelectorAll('.palette-swatch')[index];
+  };
 
   window.savePaletteLocalData = function () {
     const jsonPalette = JSON.stringify(currentPalette, null, 2);
