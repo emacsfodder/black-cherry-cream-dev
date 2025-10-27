@@ -51,15 +51,10 @@
 
     // Update the current color text
     const parent = currentSwatch?.closest('.current-swatch')?.parentElement;
-    if (parent) {
-      const currentSpan = parent.querySelector('span');
+    if (parent.parentElement) {
+      const currentSpan = parent.parentElement.querySelector('.swatch-color-value');
       if (currentSpan) {
-        /// FIXME: Never
-        console.log('Current swatch Span and color value')
-        console.log(currentSpan)
-        console.log(colorValue)
         currentSpan.textContent = colorValue;
-        currentSpan.style.color = colorValue;
       }
     }
 
@@ -244,6 +239,7 @@
   }
 
   function createColorSwatches(faceName, currentColor, property, paletteColors) {
+
     // Check if this is a grouped face
     const groupMappings = window.currentThemeData?.currentColors?.groupMappings || {};
     const isGrouped = groupMappings[faceName];
@@ -256,14 +252,13 @@
       </div>
       <div style="display: flex; align-items: center; gap: 5px;">
         <!-- Current color swatch - click to show palette -->
-        <div class="current-swatch"
-             style="width: 30px; height: 30px; background: ${currentColor || 'transparent'}; border-radius: 20px; border: 1px solid #333; cursor: pointer;"
+        <div class="current-swatch cursor-pointer w-10 h-10 border-1 border-[white]/20 rounded-full bg-[${currentColor || 'transparent'}] "
              title="Click to choose color"
              onclick="window.showPalette(this, '${faceName}', '${property}')">
         </div>
       </div>
       <div style="font-size: 9px; color: #888; margin-top: 2px;">
-        <span style="color: #FFF">${currentColor || 'not set'}</span>
+        <span class="swatch-color-value" style="color: #FFF">${currentColor || 'not set'}</span>
       </div>
     </div>
   `;
