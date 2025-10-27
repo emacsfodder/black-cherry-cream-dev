@@ -22,7 +22,8 @@
       navigator.clipboard.writeText(text);
       toast(`${text}\ncopied to clipboard`)
     } else {
-      toast(`${text}\nCannot be copied\n*requires HTTPS/SSL for clipboard access/`);
+      console.log(text)
+      toast(`Cannot be copied\n*requires HTTPS/SSL for clipboard access.\nCopy sent to console.`);
     }
   }
 
@@ -42,7 +43,7 @@
     justify-between
     rounded-t-xl
     items-center
-    w-[25vw]
+    w-[35vw]
   `
 
   window.ghostButton = `
@@ -472,10 +473,11 @@
 
   function createSwatch(color, name, index) {
     const swatch = document.createElement('div');
-    swatch.className = 'palette-swatch w-8 h-8 relative flex items-center justify-center';
+    swatch.className = 'palette-swatch w-24 h-8 relative flex items-center justify-center';
     swatch.innerHTML = `
-            <input type="color"
+            <input type="text"
                    value="${color}"
+                   data-coloris
                    onchange="window.updateSwatchColor(${index}, this.value)"
                    class="
                        w-full h-full border-1 border-[#333] cursor-pointer p-0 m-0
@@ -486,12 +488,13 @@
                      px-2 py-1 rounded-lg
                      hidden
                      absolute
-                     top-[-30px]
+                     top-[-70px]
                      right-2
                      bg-[#242424] border-1 border-[#333]
                  ">
               <div style="font-size: small">
                 ${color}
+                <span style="font-size: x-small" >${name}</span>
               </div>
               <div onclick="window.deleteSwatch(${index})" class="${ghostButton}">
                 ${trashIcon}
@@ -565,7 +568,7 @@
       shadow-xl
       top-1
       right-[36vw]
-      w-[25vw]
+      w-[35vw]
     `
 
     container.innerHTML = `
@@ -575,8 +578,8 @@
                   onclick='togglePaletteContent()'
                 >${minusIcon}</div>
             </div>
-            <div id='palette-content' class="palette-content" style="padding: 10px; color: #FFFFFF" hidden>
-                <div class="palette-swatches-grid grid grid-cols-8 gap-1"></div>
+            <div id='palette-content' class="palette-content w-[35vw]" style="padding: 10px; color: #FFFFFF" hidden>
+                <div class="palette-swatches-grid grid grid-cols-4 gap-1 w-[35vw] h-[70vh] overflow-y-auto"></div>
                 <div class="flex flex-row gap-2 my-2">
                     <div onclick="window.showImportDialog()"
                     class="${buttonTailwind}">Import</div>
@@ -634,11 +637,32 @@
     document.body.appendChild(dialog);
   }
 
+  // Inject Coloris
+  const colorisLink = document.createElement('link');
+  colorisLink.rel = 'stylesheet';
+  colorisLink.href = 'https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.css';
+
+  const colorisScript = document.createElement('script');
+  colorisScript.src = 'https://cdn.jsdelivr.net/gh/mdbassit/Coloris@latest/dist/coloris.min.js'
+
+  document.head.appendChild(colorisLink)
+  document.head.appendChild(colorisScript)
+
+  setTimeout(() => {
+    Coloris({
+      theme: 'pill',
+      themeMode: 'auto',
+      formatToggle: true,
+      onChange: (color, inputEl) => {
+        console.log(`The new color is ${color}`);
+      }
+    });
+  }, 2000)
+
   // Public API
   window.updateSwatchColor = function (index, newColor) {
     currentPalette[index].color = newColor;
   };
-
 
   window.savePaletteLocalData = function () {
     const jsonPalette = JSON.stringify(currentPalette, null, 2);
