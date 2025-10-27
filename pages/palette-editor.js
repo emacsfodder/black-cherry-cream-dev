@@ -119,6 +119,14 @@
 
   const defaultPalette = [
     {
+      "color": "#090000",
+      "name": "cherry-deepestdark"
+    },
+    {
+      "color": "#130000",
+      "name": "cherry-deepdark"
+    },
+    {
       "color": "#ffdce3",
       "name": "cherry-powder"
     },
