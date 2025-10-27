@@ -473,7 +473,7 @@
 
   function createSwatch(color, name, index) {
     const swatch = document.createElement('div');
-    swatch.className = 'palette-swatch w-24 h-8 relative flex items-center justify-center';
+    swatch.className = 'palette-swatch relative flex items-center justify-center';
     swatch.innerHTML = `
             <input type="text"
                    value="${color}"
@@ -489,7 +489,7 @@
                      hidden
                      absolute
                      top-[-70px]
-                     right-2
+                     right-10
                      bg-[#242424] border-1 border-[#333]
                  ">
               <div style="font-size: small">
@@ -579,10 +579,12 @@
                 >${minusIcon}</div>
             </div>
             <div id='palette-content' class="palette-content w-[35vw]" style="padding: 10px; color: #FFFFFF" hidden>
-                <div class="palette-swatches-grid grid grid-cols-4 gap-1 w-[35vw] h-[70vh] overflow-y-auto"></div>
+                <div class="palette-swatches-grid grid grid-cols-8 gap-1 w-[35vw]"></div>
                 <div class="flex flex-row gap-2 my-2">
                     <div onclick="window.showImportDialog()"
                     class="${buttonTailwind}">Import</div>
+                    <div onclick="window.loadPaletteLocalData()"
+                    class="${buttonTailwind}">Load</div>
                     <div onclick="window.savePaletteLocalData()"
                     class="${buttonTailwind}">Save</div>
                     <div onclick="window.addSwatch()"
@@ -613,7 +615,7 @@
 
     dialog.innerHTML = `
             <div class="${headingClasses} mb-1">Import/Copy Palette</div>
-            <textarea id="palette-import-text bg-[#2a2a3a] text-[#FFF]" style="
+            <textarea id="palette-import-text" class="bg-[#2a2a3a] text-[#FFF]" style="
                 width: 400px;
                 height: 200px;"
                 placeholder="Paste your palette array here...">${JSON.stringify(currentPalette, null, 2)}</textarea>
@@ -648,6 +650,47 @@
   document.head.appendChild(colorisLink)
   document.head.appendChild(colorisScript)
 
+  // Add this to your initialization code, right after Coloris is loaded
+  const colorisOverrideStyles = document.createElement('style');
+  colorisOverrideStyles.textContent = `
+    /* Target Coloris-generated structure specifically for palette swatches */
+    .palette-swatch .clr-field {
+      width: 2em;
+      height: 2em;
+    }
+
+    .palette-swatch .clr-field button {
+      width: 100% !important;
+      height: 100% !important;
+      border: 1px solid #333 !important;
+      border-radius: 0.25rem !important;
+      background: transparent !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      min-width: auto !important;
+      min-height: auto !important;
+    }
+
+    .palette-swatch .clr-field input {
+      display:  !important;
+      opacity: 0 !important;
+      position: absolute !important;
+
+    }
+
+    /* Ensure the clr-field doesn't interfere with your popover */
+    .palette-swatch .clr-field {
+      z-index: 1 !important;
+    }
+
+    .palette-swatch .swatch-controls {
+      z-index: 10 !important;
+    }
+  `;
+
+  // Inject the styles - you might want to add this after Coloris is loaded
+  document.head.appendChild(colorisOverrideStyles);
+
   setTimeout(() => {
     Coloris({
       theme: 'pill',
@@ -661,8 +704,17 @@
 
   // Public API
   window.updateSwatchColor = function (index, newColor) {
-    currentPalette[index].color = newColor;
-  };
+  currentPalette[index].color = newColor;
+
+  // Update the visual color of the button
+  const swatch = document.querySelectorAll('.palette-swatch')[index];
+  const colorButton = swatch.querySelector('.clr-field button');
+  if (colorButton) {
+    colorButton.style.backgroundColor = newColor;
+  }
+
+  // Coloris should handle updating the input value and its internal state
+};
 
   window.savePaletteLocalData = function () {
     const jsonPalette = JSON.stringify(currentPalette, null, 2);
@@ -678,7 +730,9 @@
       if (Array.isArray(newPalette)) {
         currentPalette = newPalette;
         const textarea = document.getElementById('palette-import-text')
-        textarea.textContent = JSON.stringify(currentPalette, null, 2);
+        if (textarea) {
+          textarea.textContent = JSON.stringify(currentPalette, null, 2);
+        }
         renderPalette();
         toast('Loaded palette from local storage')
       }
