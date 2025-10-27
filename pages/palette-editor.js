@@ -461,7 +461,6 @@
     }
   ];
 
-
   let currentPalette = [...defaultPalette];
   let isDragging = false;
   let dragOffset = { x: 0, y: 0 };
