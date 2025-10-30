@@ -1,4 +1,3 @@
-// theme-editor.js - Fixed for embedded styles with palette support and grouping
 (function () {
   'use strict';
 
