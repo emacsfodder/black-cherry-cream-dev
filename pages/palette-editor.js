@@ -2500,37 +2500,6 @@ window.boxPicker = new iro.ColorPicker("#boxPicker", {
   `
   document.body.appendChild(pickerDialog);
 
-  let colorDialogIsDragging = false;
-  let colorDialogDragOffset = { x: 0, y: 0 };
-
-  function makeColorPickerDraggable(container) {
-    const header = container.querySelector('h3');
-
-    header.addEventListener('mousedown', startDrag);
-    document.addEventListener('mousemove', onDrag);
-    document.addEventListener('mouseup', stopDrag);
-
-    function startDrag(e) {
-      if (e.target.tagName === 'BUTTON') return;
-      colorDialogIsDragging = true;
-      const rect = container.getBoundingClientRect();
-      colorDialogDragOffset.x = e.clientX - rect.left;
-      colorDialogDragOffset.y = e.clientY - rect.top;
-    }
-
-    function onDrag(e) {
-      if (!colorDialogIsDragging) return;
-      container.style.left = (e.clientX - colorDialogDragOffset.x) + 'px';
-      container.style.top = (e.clientY - colorDialogDragOffset.y) + 'px';
-      container.style.right = 'auto';
-    }
-
-    function stopDrag() {
-      colorDialogIsDragging = false;
-    }
-  }
-
-  makeColorPickerDraggable(pickerDialog)
 
   window.pickerSetPaletteColor = document.getElementById('pickerSetPaletteColor')
 
@@ -2640,3 +2609,35 @@ window.boxPicker = new iro.ColorPicker("#boxPicker", {
   }
 
 })();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const colorPicker = document.getElementById('colorDialog');
+    const dragHandle = colorPicker.querySelector('h3');
+
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    dragHandle.addEventListener('mousedown', (e) => {
+        isDragging = true;
+        offsetX = e.clientX - colorPicker.offsetLeft;
+        offsetY = e.clientY - colorPicker.offsetTop;
+        e.preventDefault();
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup', onMouseUp);
+    });
+
+    function onMouseMove(e) {
+        if (!isDragging) return;
+        const newX = e.clientX - offsetX;
+        const newY = e.clientY - offsetY;
+        colorPicker.style.left = newX + 'px';
+        colorPicker.style.top = newY + 'px';
+    }
+
+    function onMouseUp() {
+        if (!isDragging) return;
+        isDragging = false;
+        document.removeEventListener('mousemove', onMouseMove);
+        document.removeEventListener('mouseup', onMouseUp);
+    }
+});
