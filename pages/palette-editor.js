@@ -2468,7 +2468,7 @@ window.boxPicker = new iro.ColorPicker("#boxPicker", {
       <div id="swatchText" class="absolute top-1 right-1 w-fit text-xs text-white bg-black p-1 px-2 rounded-full"></div>
     </div>
     <div id="boxPicker"></div>
-    <div class="flex flex-row items-center justify-between">
+    <div class="flex flex-row items-center justify-between gap-2">
       <div
         id="pickerSetPaletteColor"
         data-color=''
