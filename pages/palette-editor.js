@@ -1801,6 +1801,20 @@ window.boxPicker = new iro.ColorPicker("#boxPicker", {
         id: 'hue-slider',
         sliderType: 'hue'
       }
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        id: 'sat-slider',
+        sliderType: 'saturation'
+      }
+    },
+    {
+      component: iro.ui.Slider,
+      options: {
+        id: 'val-slider',
+        sliderType: 'value'
+      }
     }
   ]
 });
