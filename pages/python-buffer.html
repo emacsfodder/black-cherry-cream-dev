@@ -1,38 +1,43 @@
-<!DOCTYPE html>
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8"/>
-    <title>python-buffer</title>
+    <title>app.py</title>
 <meta name="generator" content="emacs 30.2; htmlfontify" />
 <style type="text/css"><!--
-body, pre, span.default   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
-span.default a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.rainbow-delimiters-depth-6-face   { text-decoration: none;  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.rainbow-delimiters-depth-6-face a {  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.rainbow-delimiters-depth-5-face   { text-decoration: none;  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.rainbow-delimiters-depth-5-face a {  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.rainbow-delimiters-depth-4-face   { text-decoration: none;  color: #3c5457;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.rainbow-delimiters-depth-4-face a {  color: #3c5457;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.rainbow-delimiters-depth-3-face   { text-decoration: none;  color: #466265;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.rainbow-delimiters-depth-3-face a {  color: #466265;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.comment   { text-decoration: none;  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.comment a {  color: #928374;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.rainbow-delimiters-depth-2-face   { text-decoration: none;  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.rainbow-delimiters-depth-2-face a {  color: #507073;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.constant   { text-decoration: none;  color: #bbaa97;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.constant a {  color: #bbaa97;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.variable-name   { text-decoration: none;  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.variable-name a {  color: #83a598;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.string   { text-decoration: none;  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.string a {  color: #528b8b;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.number   { text-decoration: none;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
-span.number a {  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.builtin   { text-decoration: none;  color: #77fee9;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.builtin a {  color: #77fee9;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
-span.keyword   { text-decoration: none;  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
-span.keyword a {  color: #66999d;  font-family: monospace;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+body, pre { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.default a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-3-face   { text-decoration: none;  color: #466265;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-3-face a {  color: #466265;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.doc   { text-decoration: none;  color: #528b8b;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.doc a {  color: #528b8b;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.misc-punctuation   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.misc-punctuation a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.number   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+span.number a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.type   { text-decoration: none;  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.type a {  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.function-name   { text-decoration: none;  color: #a89984;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.function-name a {  color: #a89984;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.builtin   { text-decoration: none;  color: #77fee9;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.builtin a {  color: #77fee9;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.comment   { text-decoration: none;  color: #928374;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.comment a {  color: #928374;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-2-face   { text-decoration: none;  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-2-face a {  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.constant   { text-decoration: none;  color: #bbaa97;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.constant a {  color: #bbaa97;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.variable-name   { text-decoration: none;  color: #83a598;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.variable-name a {  color: #83a598;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.string   { text-decoration: none;  color: #528b8b;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.string a {  color: #528b8b;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+span.keyword   { text-decoration: none;  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+span.keyword a {  color: #66999d;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
  --></style>
 
     <script type="text/javascript"><!--
@@ -129,46 +134,414 @@ span.keyword a {  color: #66999d;  font-family: monospace;  font-stretch: normal
           else                            { e.style.display = "none";   }
       }
   }
-				     --> </script>
+--> </script>
   </head>
-  <body onload="stripe('index'); return true;" class="default">
+  <body onload="stripe('index'); return true;">
 
-<pre><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
-<span class="keyword">import</span> numpy <span class="keyword">as</span> np
-<span class="keyword">import</span> wave
-<span class="keyword">import</span> math
-<span class="keyword">import</span> sys
+<pre><span class="keyword">import</span> os
+<span class="keyword">import</span> random
+<span class="keyword">import</span> logging
+<span class="keyword">import</span> psycopg2
+<span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI, Request, APIRouter, HTTPException, Query
+<span class="keyword">from</span> fastapi.responses <span class="keyword">import</span> HTMLResponse, FileResponse
+<span class="keyword">from</span> fastapi.staticfiles <span class="keyword">import</span> StaticFiles
+<span class="keyword">from</span> omegaconf <span class="keyword">import</span> OmegaConf
+<span class="keyword">from</span> starlette.middleware.cors <span class="keyword">import</span> CORSMiddleware
+<span class="keyword">from</span> functools <span class="keyword">import</span> wraps
+<span class="keyword">from</span> dotenv <span class="keyword">import</span> load_dotenv
 
-<span class="keyword">if</span> <span class="builtin">len</span><span class="rainbow-delimiters-depth-1-face">(</span>sys.argv<span class="rainbow-delimiters-depth-1-face">)</span> != <span class="number">2</span>:
-    <span class="builtin">print</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">'Requires .wav file as arg'</span><span class="rainbow-delimiters-depth-1-face">)</span>
-    exit<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
 
-<span class="variable-name">file</span> = sys.argv<span class="rainbow-delimiters-depth-1-face">[</span><span class="number">1</span><span class="rainbow-delimiters-depth-1-face">]</span>
+<span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
 
-<span class="keyword">with</span> wave.open<span class="rainbow-delimiters-depth-1-face">(</span>file, <span class="string">&quot;r&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span> <span class="keyword">as</span> wav_file:
-    <span class="variable-name">num_channels</span> = wav_file.getnchannels<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
-    <span class="variable-name">frame_rate</span> = wav_file.getframerate<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
-    <span class="variable-name">downsample</span> = math.ceil<span class="rainbow-delimiters-depth-1-face">(</span>frame_rate * num_channels / <span class="number">2</span><span class="rainbow-delimiters-depth-1-face">)</span>
-    <span class="variable-name">process_chunk_size</span> = <span class="number">600000</span> - <span class="rainbow-delimiters-depth-1-face">(</span><span class="number">600000</span> % frame_rate<span class="rainbow-delimiters-depth-1-face">)</span>
-    <span class="variable-name">signal</span> = <span class="constant">None</span>
-    <span class="variable-name">waveform</span> = np.array<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-2-face">[</span><span class="rainbow-delimiters-depth-2-face">]</span><span class="rainbow-delimiters-depth-1-face">)</span>
+ All media work us over completely. They are so
+ pervasive in their personal, political, economic,
+ aesthetic, psychological, moral, ethical, and
+ social consequences, they leave NO part of us
+ untouched, unaffected, unaltered.
 
-    <span class="keyword">while</span> signal <span class="keyword">is</span> <span class="constant">None</span> <span class="keyword">or</span> signal.size &gt; <span class="number">0</span>:
-        <span class="variable-name">signal</span> = np.frombuffer<span class="rainbow-delimiters-depth-1-face">(</span>wav_file.readframes<span class="rainbow-delimiters-depth-2-face">(</span>process_chunk_size<span class="rainbow-delimiters-depth-2-face">)</span>, dtype=<span class="string">'int16'</span><span class="rainbow-delimiters-depth-1-face">)</span>
+- The Medium is the Massage.
 
-        <span class="comment"># Take mean of absolute values per 0.5 seconds</span>
-        <span class="variable-name">sub_waveform</span> = np.nanmean<span class="rainbow-delimiters-depth-1-face">(</span>
-            np.pad<span class="rainbow-delimiters-depth-2-face">(</span>np.absolute<span class="rainbow-delimiters-depth-3-face">(</span>signal<span class="rainbow-delimiters-depth-3-face">)</span>, <span class="rainbow-delimiters-depth-3-face">(</span><span class="number">0</span>, <span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span>downsample - <span class="rainbow-delimiters-depth-6-face">(</span>signal.size % downsample<span class="rainbow-delimiters-depth-6-face">)</span><span class="rainbow-delimiters-depth-5-face">)</span> % downsample<span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span>, mode=<span class="string">'constant'</span><span class="rainbow-delimiters-depth-2-face">)</span>.reshape<span class="rainbow-delimiters-depth-2-face">(</span>-<span class="number">1</span>, downsample<span class="rainbow-delimiters-depth-2-face">)</span>,
-            axis=<span class="number">1</span>
+  Marshall McLuhan
+
+</span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>
+
+<span class="variable-name">app</span> = FastAPI<span class="rainbow-delimiters-depth-1-face">(</span>
+    title=<span class="string">&quot;hnstories&quot;</span>,
+    version=<span class="string">&quot; mcluhan-massage&quot;</span>,
+    docs_url=<span class="constant">None</span>,
+    redoc_url=<span class="constant">None</span>,
+    openapi_url=<span class="string">&quot;/api/openapi.json&quot;</span>,
+<span class="rainbow-delimiters-depth-1-face">)</span>
+
+app.add_middleware<span class="rainbow-delimiters-depth-1-face">(</span>
+    CORSMiddleware,
+    allow_origins=<span class="rainbow-delimiters-depth-2-face">[</span><span class="string">&quot;*&quot;</span><span class="rainbow-delimiters-depth-2-face">]</span>,  <span class="comment"># Allows all origins</span>
+    allow_methods=<span class="rainbow-delimiters-depth-2-face">[</span><span class="string">&quot;*&quot;</span><span class="rainbow-delimiters-depth-2-face">]</span>,  <span class="comment"># Allows all methods</span>
+    allow_headers=<span class="rainbow-delimiters-depth-2-face">[</span><span class="string">&quot;*&quot;</span><span class="rainbow-delimiters-depth-2-face">]</span>,  <span class="comment"># Allows all headers</span>
+<span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="variable-name">api</span> = APIRouter<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="comment"># Configure basic logging for the application</span>
+logging.basicConfig<span class="rainbow-delimiters-depth-1-face">(</span>
+    level=logging.INFO, format=<span class="string">&quot;%(asctime)s - %(levelname)s - %(message)s&quot;</span>
+<span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="variable-name">logger</span> = logging.getLogger<span class="rainbow-delimiters-depth-1-face">(</span>__name__<span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="comment"># --- Load Configuration from config.toml ---</span>
+<span class="variable-name">config_path</span> = os.path.join<span class="rainbow-delimiters-depth-1-face">(</span>os.path.dirname<span class="rainbow-delimiters-depth-2-face">(</span>__file__<span class="rainbow-delimiters-depth-2-face">)</span>, <span class="string">&quot;config.yaml&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="variable-name">config</span> = OmegaConf.load<span class="rainbow-delimiters-depth-1-face">(</span>config_path<span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="builtin">print</span><span class="rainbow-delimiters-depth-1-face">(</span>OmegaConf.to_yaml<span class="rainbow-delimiters-depth-2-face">(</span>config<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+load_dotenv<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="variable-name">hn_pass</span> = os.environ.get<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;HNDB_PASS&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="variable-name">hn_db</span> = config.db.name <span class="keyword">or</span> <span class="string">&quot;hackernews&quot;</span>
+<span class="variable-name">hn_user</span> = config.db.user <span class="keyword">or</span> <span class="string">&quot;hackernews&quot;</span>
+<span class="variable-name">hn_host</span> = config.db.host <span class="keyword">or</span> <span class="string">&quot;helios&quot;</span>
+
+
+<span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:
+    <span class="builtin">print</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;Starting http/json api for hnstories&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+
+<span class="keyword">def</span> <span class="function-name">db_error_handling</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">func</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="type">@wraps</span><span class="rainbow-delimiters-depth-1-face">(</span>func<span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="keyword">def</span> <span class="function-name">wrapper</span><span class="rainbow-delimiters-depth-1-face">(</span>*args, **kwargs<span class="rainbow-delimiters-depth-1-face">)</span>:
+        <span class="keyword">try</span>:
+            <span class="comment"># Call the actual route function</span>
+            <span class="keyword">return</span> func<span class="rainbow-delimiters-depth-1-face">(</span>*args, **kwargs<span class="rainbow-delimiters-depth-1-face">)</span>
+
+        <span class="keyword">except</span> psycopg2.OperationalError <span class="keyword">as</span> e:
+            <span class="comment"># Handle DB connection issues (500 error)</span>
+            <span class="keyword">raise</span> HTTPException<span class="rainbow-delimiters-depth-1-face">(</span>status_code=<span class="number">500</span>, detail=f<span class="string">&quot;Database connection error: </span><span class="misc-punctuation">{</span>e<span class="misc-punctuation">}</span><span class="string">&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+        <span class="keyword">except</span> <span class="type">Exception</span> <span class="keyword">as</span> e:
+            <span class="comment"># Handle any other unexpected errors</span>
+            <span class="keyword">raise</span> HTTPException<span class="rainbow-delimiters-depth-1-face">(</span>status_code=<span class="number">500</span>, detail=f<span class="string">&quot;Unexpected error: </span><span class="misc-punctuation">{</span>e<span class="misc-punctuation">}</span><span class="string">&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="keyword">return</span> wrapper
+
+
+<span class="keyword">def</span> <span class="function-name">db_connect</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">func</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="type">@wraps</span><span class="rainbow-delimiters-depth-1-face">(</span>func<span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="keyword">def</span> <span class="function-name">wrapper</span><span class="rainbow-delimiters-depth-1-face">(</span>*args, **kwargs<span class="rainbow-delimiters-depth-1-face">)</span>:
+        <span class="variable-name">conn</span> = psycopg2.connect<span class="rainbow-delimiters-depth-1-face">(</span>
+            dbname=hn_db,
+            user=hn_user,
+            host=hn_host,
+            password=hn_pass,
+            port=<span class="number">5432</span>,
+            sslmode=<span class="string">&quot;require&quot;</span>,
+        <span class="rainbow-delimiters-depth-1-face">)</span>
+        <span class="variable-name">cur</span> = conn.cursor<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+        <span class="keyword">try</span>:
+            kwargs<span class="rainbow-delimiters-depth-1-face">[</span><span class="string">'cur'</span><span class="rainbow-delimiters-depth-1-face">]</span> = cur
+            <span class="variable-name">result</span> = func<span class="rainbow-delimiters-depth-1-face">(</span>*args, **kwargs<span class="rainbow-delimiters-depth-1-face">)</span>
+            conn.commit<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+            <span class="keyword">return</span> result
+        <span class="keyword">finally</span>:
+            cur.close<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+            conn.close<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="keyword">return</span> wrapper
+
+
+<span class="keyword">def</span> <span class="function-name">story_fields</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="doc">&quot;&quot;</span><span class="doc">&quot;</span><span class="doc">Return a list of fields for a story.</span><span class="doc">&quot;</span><span class="doc">&quot;&quot;</span>
+    <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">[</span><span class="string">&quot;id&quot;</span>, <span class="string">&quot;title&quot;</span>, <span class="string">&quot;link&quot;</span>, <span class="string">&quot;datetime&quot;</span>, <span class="string">&quot;score&quot;</span>, <span class="string">&quot;comment_url&quot;</span>, <span class="string">&quot;username&quot;</span>, <span class="string">&quot;userlink&quot;</span><span class="rainbow-delimiters-depth-1-face">]</span>
+
+
+<span class="keyword">def</span> <span class="function-name">story_fields_sql</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">separator</span>=<span class="string">&quot;, &quot;</span>, <span class="variable-name">prefix</span>=<span class="string">&quot;&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="doc">&quot;&quot;</span><span class="doc">&quot;</span><span class="doc">Return a string of story fields for SQL queries, with optional prefix.</span><span class="doc">&quot;</span><span class="doc">&quot;&quot;</span>
+    <span class="keyword">return</span> separator.join<span class="rainbow-delimiters-depth-1-face">(</span>f<span class="string">&quot;</span><span class="misc-punctuation">{</span>prefix<span class="misc-punctuation">}{</span>field<span class="misc-punctuation">}</span><span class="string">&quot;</span> <span class="keyword">for</span> field <span class="keyword">in</span> story_fields<span class="rainbow-delimiters-depth-2-face">(</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+
+<span class="keyword">def</span> <span class="function-name">row_to_story</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">row</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="doc">&quot;&quot;</span><span class="doc">&quot;</span><span class="doc">Convert a database row into a story dictionary.</span><span class="doc">&quot;</span><span class="doc">&quot;&quot;</span>
+    <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">{</span>field: value <span class="keyword">for</span> <span class="variable-name">field</span>, <span class="variable-name">value</span> <span class="keyword">in</span> <span class="builtin">zip</span><span class="rainbow-delimiters-depth-2-face">(</span>story_fields<span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-3-face">)</span>, row<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">}</span>
+
+
+<span class="keyword">def</span> <span class="function-name">select_stories</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">cursor</span>, <span class="variable-name">query</span>, <span class="variable-name">offset</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    cursor.execute<span class="rainbow-delimiters-depth-1-face">(</span>
+        f<span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+        SELECT </span><span class="misc-punctuation">{</span>story_fields_sql()<span class="misc-punctuation">}</span><span class="string">
+        FROM stories
+        WHERE LOWER(title) LIKE %(query)s
+        ORDER BY datetime DESC
+        LIMIT 25
+        OFFSET %(offset)s
+        </span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>,
+        <span class="rainbow-delimiters-depth-2-face">{</span>
+            <span class="string">&quot;query&quot;</span>: f<span class="string">&quot;%</span><span class="misc-punctuation">{</span>query.lower()<span class="misc-punctuation">}</span><span class="string">%&quot;</span>,
+            <span class="string">&quot;offset&quot;</span>: offset,
+        <span class="rainbow-delimiters-depth-2-face">}</span>,
+    <span class="rainbow-delimiters-depth-1-face">)</span>
+
+
+<span class="keyword">def</span> <span class="function-name">select_recent_stories</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">cursor</span>, <span class="variable-name">offset</span>, <span class="variable-name">limit</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    cursor.execute<span class="rainbow-delimiters-depth-1-face">(</span>
+        f<span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+        SELECT </span><span class="misc-punctuation">{</span>story_fields_sql()<span class="misc-punctuation">}</span><span class="string">
+        FROM stories
+        ORDER BY datetime DESC
+        OFFSET %(offset)s
+        LIMIT %(limit)s
+        </span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>,
+        <span class="rainbow-delimiters-depth-2-face">{</span>
+            <span class="string">&quot;limit&quot;</span>: limit,
+            <span class="string">&quot;offset&quot;</span>: offset,
+        <span class="rainbow-delimiters-depth-2-face">}</span>,
+    <span class="rainbow-delimiters-depth-1-face">)</span>
+
+
+<span class="keyword">def</span> <span class="function-name">select_favorite_stories</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">cursor</span>, <span class="variable-name">offset</span>, <span class="variable-name">limit</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    cursor.execute<span class="rainbow-delimiters-depth-1-face">(</span>
+        f<span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+        SELECT  </span><span class="misc-punctuation">{</span>story_fields_sql(<span class="string">', '</span>, <span class="string">'s.'</span>)<span class="misc-punctuation">}</span><span class="string">
+        FROM stories s
+        JOIN story_tags st ON s.id = st.story_id
+        JOIN tags t ON st.tag_id = t.id
+        WHERE t.name = 'favorite'
+        ORDER BY s.datetime DESC
+        OFFSET %(offset)s
+        LIMIT %(limit)s
+        </span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>,
+        <span class="rainbow-delimiters-depth-2-face">{</span>
+            <span class="string">&quot;limit&quot;</span>: limit,
+            <span class="string">&quot;offset&quot;</span>: offset,
+        <span class="rainbow-delimiters-depth-2-face">}</span>,
+    <span class="rainbow-delimiters-depth-1-face">)</span>
+
+
+<span class="keyword">def</span> <span class="function-name">init_response</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">args</span>=<span class="rainbow-delimiters-depth-2-face">{</span><span class="rainbow-delimiters-depth-2-face">}</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="keyword">return</span> args
+
+
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/health&quot;</span>, tags=<span class="rainbow-delimiters-depth-2-face">[</span><span class="string">&quot;api&quot;</span><span class="rainbow-delimiters-depth-2-face">]</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="type">@api</span>.<span class="type">head</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/health&quot;</span>, tags=<span class="rainbow-delimiters-depth-2-face">[</span><span class="string">&quot;api&quot;</span><span class="rainbow-delimiters-depth-2-face">]</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="keyword">def</span> <span class="function-name">health_check</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="doc">&quot;&quot;</span><span class="doc">&quot;</span><span class="doc">
+    A simple health check endpoint that confirms the API server is running.
+    This is useful for container orchestration systems (like Docker Swarm or
+    Kubernetes) and load balancers to verify service availability.
+    </span><span class="doc">&quot;</span><span class="doc">&quot;&quot;</span>
+    <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">{</span><span class="string">&quot;status&quot;</span>: <span class="string">&quot;ok&quot;</span><span class="rainbow-delimiters-depth-1-face">}</span>
+
+
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/docs&quot;</span>, include_in_schema=<span class="constant">False</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="keyword">async</span> <span class="keyword">def</span> <span class="function-name">api_documentation</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">request</span>: <span class="type">Request</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="keyword">return</span> HTMLResponse<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, shrink-to-fit=no&quot;&gt;
+    &lt;title&gt;Elements in HTML&lt;/title&gt;
+
+    &lt;script src=&quot;https://unpkg.com/@stoplight/elements/web-components.min.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://unpkg.com/@stoplight/elements/styles.min.css&quot;&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;elements-api
+      apiDescriptionUrl=&quot;/api/openapi.json&quot;
+      router=&quot;hash&quot;
+    /&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;</span><span class="string">&quot;</span><span class="string">&quot;&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/stories&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="type">@db_connect</span>
+<span class="type">@db_error_handling</span>
+<span class="keyword">def</span> <span class="function-name">hn_stories</span><span class="rainbow-delimiters-depth-1-face">(</span>
+        offset: <span class="type">int</span> = Query<span class="rainbow-delimiters-depth-2-face">(</span><span class="number">0</span>, ge=<span class="number">0</span><span class="rainbow-delimiters-depth-2-face">)</span>,
+        limit: <span class="type">int</span> = Query<span class="rainbow-delimiters-depth-2-face">(</span><span class="number">50</span>, ge=<span class="number">1</span>, le=<span class="number">100</span><span class="rainbow-delimiters-depth-2-face">)</span>,
+        <span class="variable-name">cur</span>=<span class="constant">None</span>
+<span class="rainbow-delimiters-depth-1-face">)</span>:
+    cur.execute<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;SELECT COUNT(*) FROM stories&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">result</span> = cur.fetchone<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="keyword">if</span> result:
+        <span class="variable-name">count</span> = result<span class="rainbow-delimiters-depth-1-face">[</span><span class="number">0</span><span class="rainbow-delimiters-depth-1-face">]</span>  <span class="comment"># fetchone is simpler when expecting one row</span>
+        <span class="variable-name">pagination</span> = count &gt; limit
+        logger.info<span class="rainbow-delimiters-depth-1-face">(</span>f<span class="string">&quot;hn stories: [offset: </span><span class="misc-punctuation">{</span>offset<span class="misc-punctuation">}</span><span class="string">] [limit: </span><span class="misc-punctuation">{</span>limit<span class="misc-punctuation">}</span><span class="string">] [count: </span><span class="misc-punctuation">{</span>count<span class="misc-punctuation">}</span><span class="string">]&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+        select_recent_stories<span class="rainbow-delimiters-depth-1-face">(</span>cur, offset, limit<span class="rainbow-delimiters-depth-1-face">)</span>
+        <span class="variable-name">stories</span> = <span class="rainbow-delimiters-depth-1-face">[</span>row_to_story<span class="rainbow-delimiters-depth-2-face">(</span>row<span class="rainbow-delimiters-depth-2-face">)</span> <span class="keyword">for</span> row <span class="keyword">in</span> cur.fetchmany<span class="rainbow-delimiters-depth-2-face">(</span>limit<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">]</span>
+
+        <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">{</span>
+            <span class="string">&quot;offset&quot;</span>: offset,
+            <span class="string">&quot;limit&quot;</span>: limit,
+            <span class="string">&quot;pagination&quot;</span>: pagination,
+            <span class="string">&quot;count&quot;</span>: count,
+            <span class="string">&quot;stories&quot;</span>: stories,
+        <span class="rainbow-delimiters-depth-1-face">}</span>
+    <span class="keyword">raise</span> HTTPException<span class="rainbow-delimiters-depth-1-face">(</span><span class="number">404</span>, <span class="string">&quot;no stories..?&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+
+<span class="type">@db_connect</span>
+<span class="type">@db_error_handling</span>
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/search&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="keyword">def</span> <span class="function-name">hn_search</span><span class="rainbow-delimiters-depth-1-face">(</span>
+    query: <span class="type">str</span> = Query<span class="rainbow-delimiters-depth-2-face">(</span><span class="constant">None</span><span class="rainbow-delimiters-depth-2-face">)</span>,
+    sort_by_score: <span class="type">str</span> = Query<span class="rainbow-delimiters-depth-2-face">(</span><span class="string">&quot;off&quot;</span><span class="rainbow-delimiters-depth-2-face">)</span>,
+    offset: <span class="type">int</span> = Query<span class="rainbow-delimiters-depth-2-face">(</span><span class="number">0</span>, ge=<span class="number">0</span><span class="rainbow-delimiters-depth-2-face">)</span>,
+    <span class="variable-name">cur</span>=<span class="constant">None</span>
+<span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="variable-name">stories</span> = <span class="rainbow-delimiters-depth-1-face">[</span><span class="rainbow-delimiters-depth-1-face">]</span>
+    <span class="variable-name">count</span> = <span class="number">0</span>
+    <span class="variable-name">pagination</span> = <span class="constant">False</span>
+
+    <span class="variable-name">response_dict</span> = init_response<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-2-face">{</span>
+        <span class="string">&quot;query&quot;</span>: query,
+        <span class="string">&quot;sort_by_score&quot;</span>: sort_by_score,
+        <span class="string">&quot;offset&quot;</span>: offset,
+        <span class="string">&quot;pagination&quot;</span>: pagination,
+    <span class="rainbow-delimiters-depth-2-face">}</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="keyword">if</span> query:
+        cur.execute<span class="rainbow-delimiters-depth-1-face">(</span>
+            <span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+            SELECT COUNT(*)
+            FROM stories
+            WHERE LOWER(title) LIKE %(query)s
+            </span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>,
+            <span class="rainbow-delimiters-depth-2-face">{</span><span class="string">&quot;query&quot;</span>: f<span class="string">&quot;%</span><span class="misc-punctuation">{</span>query.lower()<span class="misc-punctuation">}</span><span class="string">%&quot;</span><span class="rainbow-delimiters-depth-2-face">}</span>,
+        <span class="rainbow-delimiters-depth-1-face">)</span>
+        <span class="variable-name">count</span> = cur.fetchone<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span><span class="rainbow-delimiters-depth-1-face">[</span><span class="number">0</span><span class="rainbow-delimiters-depth-1-face">]</span>
+        <span class="variable-name">pagination</span> = <span class="builtin">bool</span><span class="rainbow-delimiters-depth-1-face">(</span>count &gt; <span class="number">25</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+        select_stories<span class="rainbow-delimiters-depth-1-face">(</span>cur, query, offset<span class="rainbow-delimiters-depth-1-face">)</span>
+
+        <span class="keyword">for</span> <span class="variable-name">row</span> <span class="keyword">in</span> cur.fetchmany<span class="rainbow-delimiters-depth-1-face">(</span><span class="number">25</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+            stories.append<span class="rainbow-delimiters-depth-1-face">(</span>row_to_story<span class="rainbow-delimiters-depth-2-face">(</span>row<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+        <span class="variable-name">response_dict</span> |= <span class="rainbow-delimiters-depth-1-face">{</span>
+            <span class="string">&quot;stories&quot;</span>: stories,
+            <span class="string">&quot;count&quot;</span>: count,
+            <span class="string">&quot;pagination&quot;</span>: pagination
+        <span class="rainbow-delimiters-depth-1-face">}</span>
+
+    <span class="keyword">return</span> response_dict
+
+<span class="type">@db_connect</span>
+<span class="type">@db_error_handling</span>
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/favorites/add/&lt;int:story_id&gt;&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="keyword">def</span> <span class="function-name">add_favorite</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">story_id</span>, <span class="variable-name">cur</span>=<span class="constant">None</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="variable-name">tag_name</span> = <span class="string">&quot;favorite&quot;</span>
+
+    cur.execute<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;SELECT id FROM tags WHERE name = %s;&quot;</span>, <span class="rainbow-delimiters-depth-2-face">(</span>tag_name,<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">tag_result</span> = cur.fetchone<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="keyword">if</span> tag_result:
+        <span class="variable-name">tag_id</span> = tag_result<span class="rainbow-delimiters-depth-1-face">[</span><span class="number">0</span><span class="rainbow-delimiters-depth-1-face">]</span>
+        cur.execute<span class="rainbow-delimiters-depth-1-face">(</span>
+            <span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+            INSERT INTO story_tags (story_id, tag_id)
+            VALUES (%s, %s)
+            ON CONFLICT (story_id, tag_id) DO NOTHING;
+        </span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>,
+            <span class="rainbow-delimiters-depth-2-face">(</span>story_id, tag_id<span class="rainbow-delimiters-depth-2-face">)</span>,
+        <span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">raise</span> HTTPException<span class="rainbow-delimiters-depth-1-face">(</span>status_code=<span class="number">404</span>, detail=f<span class="string">&quot;Tag '</span><span class="misc-punctuation">{</span>tag_name<span class="misc-punctuation">}</span><span class="string">' not found.&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">{</span><span class="string">&quot;info&quot;</span>: f<span class="string">&quot;Tagged story </span><span class="misc-punctuation">{</span>story_id<span class="misc-punctuation">}</span><span class="string"> as '</span><span class="misc-punctuation">{</span>tag_name<span class="misc-punctuation">}</span><span class="string">'.&quot;</span><span class="rainbow-delimiters-depth-1-face">}</span>
+
+
+<span class="type">@db_connect</span>
+<span class="type">@db_error_handling</span>
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/favorites/remove/&lt;int:story_id&gt;&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="keyword">def</span> <span class="function-name">remove_favorite</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="variable-name">story_id</span>, <span class="variable-name">cur</span>=<span class="constant">None</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="variable-name">tag_name</span> = <span class="string">&quot;favorite&quot;</span>
+    <span class="variable-name">response_message</span> = <span class="constant">None</span>
+
+    cur.execute<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;SELECT id FROM tags WHERE name = %s;&quot;</span>, <span class="rainbow-delimiters-depth-2-face">(</span>tag_name,<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">tag_result</span> = cur.fetchone<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="keyword">if</span> tag_result:
+        <span class="variable-name">tag_id</span> = tag_result<span class="rainbow-delimiters-depth-1-face">[</span><span class="number">0</span><span class="rainbow-delimiters-depth-1-face">]</span>
+        cur.execute<span class="rainbow-delimiters-depth-1-face">(</span>
+            <span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+            DELETE FROM story_tags
+            WHERE story_id = %s AND tag_id = %s;
+            </span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>,
+            <span class="rainbow-delimiters-depth-2-face">(</span>story_id, tag_id<span class="rainbow-delimiters-depth-2-face">)</span>,
         <span class="rainbow-delimiters-depth-1-face">)</span>
 
-        <span class="variable-name">waveform</span> = np.concatenate<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-2-face">(</span>waveform, sub_waveform<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+        <span class="keyword">if</span> cur.rowcount &gt; <span class="number">0</span>:
+            <span class="variable-name">response_message</span> = f<span class="string">&quot;Removed tag '</span><span class="misc-punctuation">{</span>tag_name<span class="misc-punctuation">}</span><span class="string">' from story </span><span class="misc-punctuation">{</span>story_id<span class="misc-punctuation">}</span><span class="string">.&quot;</span>
+        <span class="keyword">else</span>:
+            <span class="variable-name">response_message</span> = f<span class="string">&quot;Story </span><span class="misc-punctuation">{</span>story_id<span class="misc-punctuation">}</span><span class="string"> was not tagged as '</span><span class="misc-punctuation">{</span>tag_name<span class="misc-punctuation">}</span><span class="string">'.&quot;</span>
 
-    plt.figure<span class="rainbow-delimiters-depth-1-face">(</span><span class="number">1</span><span class="rainbow-delimiters-depth-1-face">)</span>
-    plt.title<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">'Waveform'</span><span class="rainbow-delimiters-depth-1-face">)</span>
-    plt.plot<span class="rainbow-delimiters-depth-1-face">(</span>waveform<span class="rainbow-delimiters-depth-1-face">)</span>
-    plt.show<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">{</span><span class="string">&quot;info&quot;</span>: response_message<span class="rainbow-delimiters-depth-1-face">}</span>
+
+
+<span class="type">@db_connect</span>
+<span class="type">@db_error_handling</span>
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/favorites&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="keyword">def</span> <span class="function-name">hn_favorites</span><span class="rainbow-delimiters-depth-1-face">(</span>
+    offset: <span class="type">int</span> = Query<span class="rainbow-delimiters-depth-2-face">(</span><span class="number">0</span>, ge=<span class="number">0</span><span class="rainbow-delimiters-depth-2-face">)</span>,  <span class="comment"># Default value 0, and must be &gt;= 0</span>
+    limit: <span class="type">int</span> = Query<span class="rainbow-delimiters-depth-2-face">(</span><span class="number">25</span>, ge=<span class="number">1</span>, le=<span class="number">100</span><span class="rainbow-delimiters-depth-2-face">)</span>,  <span class="comment"># Default value 25, and must be between 1 and 100</span>
+    <span class="variable-name">cur</span>=<span class="constant">None</span>
+<span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="variable-name">stories</span> = <span class="rainbow-delimiters-depth-1-face">[</span><span class="rainbow-delimiters-depth-1-face">]</span>
+    <span class="variable-name">count</span> = <span class="number">0</span>
+    <span class="variable-name">pagination_enabled</span> = <span class="constant">True</span>
+
+    <span class="variable-name">response_dict</span> = init_response<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-2-face">{</span>
+        <span class="string">&quot;title&quot;</span>: <span class="string">&quot;Hackernews Favorite Stories&quot;</span>,
+        <span class="string">&quot;favorites&quot;</span>: <span class="string">&quot;active&quot;</span>,
+        <span class="string">&quot;offset&quot;</span>: offset,
+        <span class="string">&quot;pagination_enabled&quot;</span>: <span class="constant">False</span>,
+        <span class="string">&quot;stories&quot;</span>: stories,
+        <span class="string">&quot;count&quot;</span>: count,
+    <span class="rainbow-delimiters-depth-2-face">}</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    cur.execute<span class="rainbow-delimiters-depth-1-face">(</span>
+        <span class="string">&quot;&quot;</span><span class="string">&quot;</span><span class="string">
+        SELECT COUNT(*)
+        FROM story_tags
+        JOIN tags ON story_tags.tag_id = tags.id
+        WHERE tags.name = 'favorite'
+        </span><span class="string">&quot;</span><span class="string">&quot;&quot;</span>
+    <span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="variable-name">count</span> = cur.fetchone<span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span><span class="rainbow-delimiters-depth-1-face">[</span><span class="number">0</span><span class="rainbow-delimiters-depth-1-face">]</span>
+    <span class="variable-name">pagination_enabled</span> = <span class="builtin">bool</span><span class="rainbow-delimiters-depth-1-face">(</span>count &gt; limit<span class="rainbow-delimiters-depth-1-face">)</span>
+
+    logger.info<span class="rainbow-delimiters-depth-1-face">(</span>
+        f<span class="string">&quot;hn favorite stories: [offset: </span><span class="misc-punctuation">{</span>offset<span class="misc-punctuation">}</span><span class="string">] [limit: </span><span class="misc-punctuation">{</span>limit<span class="misc-punctuation">}</span><span class="string">] [count: </span><span class="misc-punctuation">{</span>count<span class="misc-punctuation">}</span><span class="string">]&quot;</span>
+    <span class="rainbow-delimiters-depth-1-face">)</span>
+
+    select_favorite_stories<span class="rainbow-delimiters-depth-1-face">(</span>cur, offset, limit<span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="keyword">for</span> <span class="variable-name">row</span> <span class="keyword">in</span> cur.fetchmany<span class="rainbow-delimiters-depth-1-face">(</span>limit<span class="rainbow-delimiters-depth-1-face">)</span>:
+        logger.info<span class="rainbow-delimiters-depth-1-face">(</span>row<span class="rainbow-delimiters-depth-1-face">)</span>
+        stories.append<span class="rainbow-delimiters-depth-1-face">(</span>row_to_story<span class="rainbow-delimiters-depth-2-face">(</span>row<span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">)</span>
+
+    <span class="variable-name">response_dict</span> |= <span class="rainbow-delimiters-depth-1-face">{</span>
+        <span class="string">&quot;stories&quot;</span>: stories,
+        <span class="string">&quot;count&quot;</span>: count,
+        <span class="string">&quot;pagination_enabled&quot;</span>: pagination_enabled,
+    <span class="rainbow-delimiters-depth-1-face">}</span>
+
+    <span class="keyword">return</span> response_dict
+
+<span class="type">@api</span>.<span class="type">get</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/random-image&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
+<span class="keyword">def</span> <span class="function-name">get_random_image</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="rainbow-delimiters-depth-1-face">)</span>:
+    <span class="variable-name">image_dir</span> = config.images <span class="keyword">or</span> <span class="string">&quot;/images&quot;</span>
+    <span class="keyword">if</span> os.path.exists<span class="rainbow-delimiters-depth-1-face">(</span>image_dir<span class="rainbow-delimiters-depth-1-face">)</span>:
+        <span class="variable-name">image_files</span> = <span class="rainbow-delimiters-depth-1-face">[</span>f <span class="keyword">for</span> f <span class="keyword">in</span> os.listdir<span class="rainbow-delimiters-depth-2-face">(</span>image_dir<span class="rainbow-delimiters-depth-2-face">)</span> <span class="keyword">if</span> f.lower<span class="rainbow-delimiters-depth-2-face">(</span><span class="rainbow-delimiters-depth-2-face">)</span>.endswith<span class="rainbow-delimiters-depth-2-face">(</span><span class="rainbow-delimiters-depth-3-face">(</span><span class="string">'.png'</span>, <span class="string">'.jpg'</span>, <span class="string">'.jpeg'</span>, <span class="string">'.gif'</span>, <span class="string">'.webp'</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-1-face">]</span>
+        <span class="keyword">if</span> <span class="keyword">not</span> image_files:
+            <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">{</span><span class="string">&quot;info&quot;</span>: <span class="string">&quot;No jpeg images found in the specified path.&quot;</span><span class="rainbow-delimiters-depth-1-face">}</span>
+        <span class="variable-name">random_image</span> = random.choice<span class="rainbow-delimiters-depth-1-face">(</span>image_files<span class="rainbow-delimiters-depth-1-face">)</span>
+        <span class="variable-name">image_path</span> = os.path.join<span class="rainbow-delimiters-depth-1-face">(</span>image_dir, random_image<span class="rainbow-delimiters-depth-1-face">)</span>
+        <span class="keyword">return</span> FileResponse<span class="rainbow-delimiters-depth-1-face">(</span>image_path<span class="rainbow-delimiters-depth-1-face">)</span>
+    <span class="keyword">return</span> <span class="rainbow-delimiters-depth-1-face">{</span><span class="string">&quot;info&quot;</span>: f<span class="string">&quot;</span><span class="misc-punctuation">{</span>image_dir<span class="misc-punctuation">}</span><span class="string"> doesn't exist&quot;</span><span class="rainbow-delimiters-depth-1-face">}</span>
+
+
+app.include_router<span class="rainbow-delimiters-depth-1-face">(</span>api, prefix=<span class="string">&quot;/api&quot;</span>, tags=<span class="rainbow-delimiters-depth-2-face">[</span><span class="string">&quot;api&quot;</span><span class="rainbow-delimiters-depth-2-face">]</span><span class="rainbow-delimiters-depth-1-face">)</span>
+app.mount<span class="rainbow-delimiters-depth-1-face">(</span><span class="string">&quot;/&quot;</span>, StaticFiles<span class="rainbow-delimiters-depth-2-face">(</span>directory=<span class="string">&quot;dist&quot;</span>, html=<span class="constant">True</span><span class="rainbow-delimiters-depth-2-face">)</span>, name=<span class="string">&quot;vite_dist&quot;</span><span class="rainbow-delimiters-depth-1-face">)</span>
 </pre>
-    <script src='emacs-theme-tools.js' ></script>
+   <script src="emacs-theme-tools.js"></script>
  </body>
 </html>
