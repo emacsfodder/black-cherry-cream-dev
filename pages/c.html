@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <title>rgb-rot.c</title>
+<meta name="generator" content="emacs 30.2; htmlfontify" />
+<style type="text/css"><!-- 
+body, pre { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.default   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.default a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-6-face   { text-decoration: none;  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.rainbow-delimiters-depth-6-face a {  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-5-face   { text-decoration: none;  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.rainbow-delimiters-depth-5-face a {  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-4-face   { text-decoration: none;  color: #3c5457;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.rainbow-delimiters-depth-4-face a {  color: #3c5457;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-3-face   { text-decoration: none;  color: #466265;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.rainbow-delimiters-depth-3-face a {  color: #466265;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-2-face   { text-decoration: none;  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.rainbow-delimiters-depth-2-face a {  color: #507073;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.variable-name   { text-decoration: none;  color: #ffaaaa;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.variable-name a {  color: #ffaaaa;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.type   { text-decoration: none;  color: #998888;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.type a {  color: #998888;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.keyword   { text-decoration: none;  color: #eedddd;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.keyword a {  color: #eedddd;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.comment   { text-decoration: none;  color: #715151;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.comment a {  color: #715151;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.comment-delimiter   { text-decoration: none;  color: #715151;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.comment-delimiter a {  color: #715151;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.preprocessor   { text-decoration: none;  color: #ff6655;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.preprocessor a {  color: #ff6655;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.function-name   { text-decoration: none;  color: #eeaaaa;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.function-name a {  color: #eeaaaa;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+ --></style>
+
+  </head>
+  <body>
+
+<pre><span class="function-name">RGB_MATRIX_EFFECT</span><span class="rainbow-delimiters-depth-1-face">(</span>FLOW<span class="rainbow-delimiters-depth-1-face">)</span>
+
+<span class="preprocessor">#</span><span class="preprocessor">ifdef</span> RGB_MATRIX_CUSTOM_EFFECT_IMPLS
+
+<span class="comment-delimiter">/</span><span class="comment-delimiter">/ </span><span class="comment">&quot;Flow&quot; animated effect. Draws moving wave patterns mimicking the appearance
+</span><span class="comment-delimiter">// </span><span class="comment">of flowing liquid. For interesting variety of patterns, space coordinates are
+</span><span class="comment-delimiter">// </span><span class="comment">slowly rotated and a function of several sine waves is evaluated.
+</span><span class="keyword">s</span><span class="keyword">tatic</span> <span class="type">boo</span><span class="type">l</span> <span class="function-name">FLOW</span><span class="rainbow-delimiters-depth-1-face">(</span><span class="type">effect_params_t</span>* <span class="variable-name">params</span><span class="rainbow-delimiters-depth-1-face">)</span> <span class="rainbow-delimiters-depth-1-face">{</span>
+    RGB_MATRIX_USE_LIMITS<span class="rainbow-delimiters-depth-2-face">(</span>led_min, led_max<span class="rainbow-delimiters-depth-2-face">)</span>;
+
+    <span class="keyword">static</span> <span class="type">uint16_</span><span class="type">t</span> <span class="variable-name">wrap_correction</span> = 0;
+    <span class="keyword">static</span> <span class="type">uint8_</span><span class="type">t</span>  <span class="variable-name">last_high_byte</span>  = 0;
+    <span class="keyword">const</span> <span class="type">uint8_</span><span class="type">t</span>   <span class="variable-name">time_scale</span>      = 1 + rgb_matrix_config.speed / 8;
+    <span class="keyword">const</span> <span class="type">uint8_</span><span class="type">t</span>   <span class="variable-name">high_byte</span>       = <span class="rainbow-delimiters-depth-2-face">(</span><span class="type">uint8_t</span><span class="rainbow-delimiters-depth-2-face">)</span><span class="rainbow-delimiters-depth-2-face">(</span>g_rgb_timer &gt;&gt; 16<span class="rainbow-delimiters-depth-2-face">)</span>;
+    <span class="keyword">if</span> <span class="rainbow-delimiters-depth-2-face">(</span>last_high_byte != high_byte<span class="rainbow-delimiters-depth-2-face">)</span> <span class="rainbow-delimiters-depth-2-face">{</span>
+        last_high_byte = high_byte;
+        wrap_correction += <span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">(</span><span class="type">uint16_t</span><span class="rainbow-delimiters-depth-4-face">)</span>time_scale<span class="rainbow-delimiters-depth-3-face">)</span> &lt;&lt; 8;
+    <span class="rainbow-delimiters-depth-2-face">}</span>
+    <span class="keyword">const</span> <span class="type">uint16_</span><span class="type">t</span> <span class="variable-name">time</span> = scale16by8<span class="rainbow-delimiters-depth-2-face">(</span>g_rgb_timer, time_scale<span class="rainbow-delimiters-depth-2-face">)</span> + wrap_correction;
+
+    <span class="comment-delimiter">/</span><span class="comment-delimiter">/ </span><span class="comment">Compute rotation coefficients with 7 fractional bits.
+</span>    <span class="keyword">c</span><span class="keyword">onst</span> <span class="type">int8_</span><span class="type">t</span>  <span class="variable-name">rot_c</span> = cos8<span class="rainbow-delimiters-depth-2-face">(</span>time / 4<span class="rainbow-delimiters-depth-2-face">)</span> - 128;
+    <span class="keyword">const</span> <span class="type">int8_</span><span class="type">t</span>  <span class="variable-name">rot_s</span> = sin8<span class="rainbow-delimiters-depth-2-face">(</span>time / 4<span class="rainbow-delimiters-depth-2-face">)</span> - 128;
+    <span class="keyword">const</span> <span class="type">uint8_</span><span class="type">t</span> <span class="variable-name">omega</span> = 32 + sin8<span class="rainbow-delimiters-depth-2-face">(</span>time<span class="rainbow-delimiters-depth-2-face">)</span> / 4;
+
+    <span class="keyword">for</span> <span class="rainbow-delimiters-depth-2-face">(</span><span class="type">uint8_</span><span class="type">t</span> <span class="variable-name">i</span> = led_min; i &lt; led_max; ++i<span class="rainbow-delimiters-depth-2-face">)</span> <span class="rainbow-delimiters-depth-2-face">{</span>
+        RGB_MATRIX_TEST_LED_FLAGS<span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-3-face">)</span>;
+        <span class="keyword">const</span> <span class="type">uint8_</span><span class="type">t</span> <span class="variable-name">x</span> = g_led_config.point<span class="rainbow-delimiters-depth-3-face">[</span>i<span class="rainbow-delimiters-depth-3-face">]</span>.x;
+        <span class="keyword">const</span> <span class="type">uint8_</span><span class="type">t</span> <span class="variable-name">y</span> = g_led_config.point<span class="rainbow-delimiters-depth-3-face">[</span>i<span class="rainbow-delimiters-depth-3-face">]</span>.y;
+
+        <span class="comment-delimiter">/</span><span class="comment-delimiter">/ </span><span class="comment">Rotate (x, y) by the 2x2 rotation matrix described by rot_c, rot_s.
+</span>        <span class="keyword">c</span><span class="keyword">onst</span> <span class="type">uint8_</span><span class="type">t</span> <span class="variable-name">x1</span> = <span class="rainbow-delimiters-depth-3-face">(</span><span class="type">uint8_t</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>rot_c<span class="rainbow-delimiters-depth-5-face">)</span> * <span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>x<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span> / 128<span class="rainbow-delimiters-depth-3-face">)</span> - <span class="rainbow-delimiters-depth-3-face">(</span><span class="type">uint8_t</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>rot_s<span class="rainbow-delimiters-depth-5-face">)</span> * <span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>y<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span> / 128<span class="rainbow-delimiters-depth-3-face">)</span>;
+        <span class="keyword">const</span> <span class="type">uint8_</span><span class="type">t</span> <span class="variable-name">y1</span> = <span class="rainbow-delimiters-depth-3-face">(</span><span class="type">uint8_t</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>rot_s<span class="rainbow-delimiters-depth-5-face">)</span> * <span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>x<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span> / 128<span class="rainbow-delimiters-depth-3-face">)</span> + <span class="rainbow-delimiters-depth-3-face">(</span><span class="type">uint8_t</span><span class="rainbow-delimiters-depth-3-face">)</span><span class="rainbow-delimiters-depth-3-face">(</span><span class="rainbow-delimiters-depth-4-face">(</span><span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>rot_c<span class="rainbow-delimiters-depth-5-face">)</span> * <span class="rainbow-delimiters-depth-5-face">(</span><span class="rainbow-delimiters-depth-6-face">(</span><span class="type">int16_t</span><span class="rainbow-delimiters-depth-6-face">)</span>y<span class="rainbow-delimiters-depth-5-face">)</span><span class="rainbow-delimiters-depth-4-face">)</span> / 128<span class="rainbow-delimiters-depth-3-face">)</span>;
+
+        <span class="type">uint8_</span><span class="type">t</span> <span class="variable-name">value</span> = scale8<span class="rainbow-delimiters-depth-3-face">(</span>sin8<span class="rainbow-delimiters-depth-4-face">(</span>x1 - 2 * time<span class="rainbow-delimiters-depth-4-face">)</span>, omega<span class="rainbow-delimiters-depth-3-face">)</span> + y1 + time / 4;
+        value         = <span class="rainbow-delimiters-depth-3-face">(</span>value &lt;= 127<span class="rainbow-delimiters-depth-3-face">)</span> ? value : <span class="rainbow-delimiters-depth-3-face">(</span>255 - value<span class="rainbow-delimiters-depth-3-face">)</span>;
+
+        <span class="type">hsv_</span><span class="type">t</span> <span class="variable-name">hsv</span> = rgb_matrix_config.hsv;
+        hsv.h -= value / 4;
+        hsv.s     = scale8<span class="rainbow-delimiters-depth-3-face">(</span>hsv.s, <span class="rainbow-delimiters-depth-4-face">(</span>value &lt; 74<span class="rainbow-delimiters-depth-4-face">)</span> ? 255 : <span class="rainbow-delimiters-depth-4-face">(</span>549 - 4 * value<span class="rainbow-delimiters-depth-4-face">)</span><span class="rainbow-delimiters-depth-3-face">)</span>;
+        hsv.v     = scale8<span class="rainbow-delimiters-depth-3-face">(</span>hsv.v, <span class="rainbow-delimiters-depth-4-face">(</span>value &lt; 95<span class="rainbow-delimiters-depth-4-face">)</span> ? <span class="rainbow-delimiters-depth-4-face">(</span>64 + 2 * value<span class="rainbow-delimiters-depth-4-face">)</span> : 255<span class="rainbow-delimiters-depth-3-face">)</span>;
+
+        <span class="type">rgb_</span><span class="type">t</span> <span class="variable-name">rgb</span> = rgb_matrix_hsv_to_rgb<span class="rainbow-delimiters-depth-3-face">(</span>hsv<span class="rainbow-delimiters-depth-3-face">)</span>;
+        rgb_matrix_set_color<span class="rainbow-delimiters-depth-3-face">(</span>i, rgb.r, rgb.g, rgb.b<span class="rainbow-delimiters-depth-3-face">)</span>;
+    <span class="rainbow-delimiters-depth-2-face">}</span>
+
+    <span class="keyword">return</span> rgb_matrix_check_finished_leds<span class="rainbow-delimiters-depth-2-face">(</span>led_max<span class="rainbow-delimiters-depth-2-face">)</span>;
+<span class="rainbow-delimiters-depth-1-face">}</span>
+
+<span class="preprocessor">#endif</span> <span class="comment-delimiter">// </span><span class="comment">RGB_MATRIX_CUSTOM_EFFECT_IMPL</span><span class="comment">S</span></pre>
+
+    <script src="../emacs-theme-tools.js"></script>
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <title>htmlfontify-file.el</title>
+<meta name="generator" content="emacs 30.2; htmlfontify" />
+<style type="text/css"><!-- 
+body, pre { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.default   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.default a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.builtin   { text-decoration: none;  color: #ff6655;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.builtin a {  color: #ff6655;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.string   { text-decoration: none;  color: #ddaaaa;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.string a {  color: #ddaaaa;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.doc   { text-decoration: none;  color: #ad6c6c;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.doc a {  color: #ad6c6c;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.function-name   { text-decoration: none;  color: #eeaaaa;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.function-name a {  color: #eeaaaa;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.constant   { text-decoration: none;  color: #ff8877;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.constant a {  color: #ff8877;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.keyword   { text-decoration: none;  color: #eedddd;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.keyword a {  color: #eedddd;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+ --></style>
+
+  </head>
+  <body>
+
+<pre>(<span class="keyword">require</span> '<span class="constant">htmlfontify</span>)
+
+(<span class="keyword">defun</span> <span class="function-name">hfy-default-header</span> (file style)
+  <span class="doc">&quot;Replace default header.&quot;</span>
+  (format <span class="string">&quot;&lt;!DOCTYPE html&gt;
+&lt;html lang=\&quot;en\&quot;&gt;
+  &lt;head&gt;
+     &lt;title&gt;%s&lt;/title&gt;
+%s
+  &lt;/head&gt;
+  &lt;body&gt;
+&quot;</span> (mapconcat 'hfy-html-quote (mapcar 'char-to-string file) <span class="string">&quot;&quot;</span>) style))
+
+(<span class="keyword">defun</span> <span class="function-name">hfy-default-footer</span> (_file)
+  <span class="doc">&quot;Replace default footer.&quot;</span>
+  <span class="string">&quot;
+    &lt;script src=\&quot;../emacs-theme-tools.js\&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+&quot;</span>)
+
+(custom-set-faces
+ '(default                      ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#ffeeee&quot;</span> <span class="builtin">:background</span> <span class="string">&quot;#1b1616ff&quot;</span>))))
+ '(font-lock-builtin-face       ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#ff6655&quot;</span>))))
+ '(font-lock-comment-face       ((t (<span class="builtin">:bold</span> t <span class="builtin">:foreground</span> <span class="string">&quot;#715151&quot;</span>))))
+ '(font-lock-doc-face           ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#ad6c6c&quot;</span>))))
+ '(font-lock-doc-markup-face    ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#bc8e8e&quot;</span>))))
+ '(font-lock-constant-face      ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#ff8877&quot;</span>))))
+ '(font-lock-function-name-face ((t (<span class="builtin">:bold</span> t <span class="builtin">:foreground</span> <span class="string">&quot;#eeaaaa&quot;</span>))))
+ '(font-lock-keyword-face       ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#eedddd&quot;</span>))))
+ '(font-lock-string-face        ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#ddaaaa&quot;</span>))))
+ '(font-lock-type-face		((t (<span class="builtin">:foreground</span> <span class="string">&quot;#998888&quot;</span>))))
+ '(font-lock-variable-name-face ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#ffaaaa&quot;</span> <span class="builtin">:bold</span> t))))
+ '(font-lock-warning-face       ((t (<span class="builtin">:foreground</span> <span class="string">&quot;#880000&quot;</span> <span class="builtin">:weight</span> bold)))))
+
+(find-file (<span class="keyword">pop</span> command-line-args-left))
+(font-lock-ensure)
+
+(<span class="keyword">with-current-buffer</span>
+    (htmlfontify-buffer)
+  (princ
+   (buffer-string)))
+</pre>
+
+    <script src="../emacs-theme-tools.js"></script>
+  </body>
+</html>

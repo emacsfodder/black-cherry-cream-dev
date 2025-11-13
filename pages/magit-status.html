@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <title>magit: emacs-theme-black-cherry-cream</title>
+<meta name="generator" content="emacs 30.2; htmlfontify" />
+<style type="text/css"><!-- 
+body, pre { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.default   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.default a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.magit-branch-local-0006   { text-decoration: none;  display: none;  color: #61acbb;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  border-width: 1px;  font-size: 10pt; }
+span.magit-branch-local-0006 a {  display: none;  color: #61acbb;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  border-width: 1px;  font-size: 10pt; text-decoration: underline; }
+span.default-0005   { text-decoration: none;  display: none;  color: #83a598;  font-size: 105%; }
+span.default-0005 a {  display: none;  color: #83a598;  font-size: 105%; text-decoration: underline; }
+span.default-0004   { text-decoration: none;  display: none;  color: #4c443e;  font-size: 105%; }
+span.default-0004 a {  display: none;  color: #4c443e;  font-size: 105%; text-decoration: underline; }
+span.default-0003   { text-decoration: none;  display: none;  font-size: 105%; }
+span.default-0003 a {  display: none;  font-size: 105%; text-decoration: underline; }
+span.default-0002   { text-decoration: none;  display: none;  background: #22201e;  color: #aca8c0;  font-size: 105%; }
+span.default-0002 a {  display: none;  background: #22201e;  color: #aca8c0;  font-size: 105%; text-decoration: underline; }
+span.magit-diff-file-heading   { text-decoration: none;  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.magit-diff-file-heading a {  font-weight: 700;  font-family: "default";  font-stretch: normal;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.magit-filename   { text-decoration: none;  font-weight: 500;  font-family: "default";  font-stretch: normal;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.magit-filename a {  font-weight: 500;  font-family: "default";  font-stretch: normal;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.magit-diff-file-heading-highlight-0001   { text-decoration: none;  background: #181616;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  font-size: 10pt; }
+span.magit-diff-file-heading-highlight-0001 a {  background: #181616;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  font-size: 10pt; text-decoration: underline; }
+span.magit-diff-file-heading-highlight-0000   { text-decoration: none;  background: #181616;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  font-size: 10pt; }
+span.magit-diff-file-heading-highlight-0000 a {  background: #181616;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  font-size: 10pt; text-decoration: underline; }
+span.magit-section-child-count   { text-decoration: none;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; }
+span.magit-section-child-count a {  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #ffeeee;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.magit-section-heading   { text-decoration: none;  color: #d5c4a1;  background: #0a1c21;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; }
+span.magit-section-heading a {  color: #d5c4a1;  background: #0a1c21;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  font-size: 10pt; text-decoration: underline; }
+span.magit-branch-remote   { text-decoration: none;  color: #83a598;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.magit-branch-remote a {  color: #83a598;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+span.magit-branch-local   { text-decoration: none;  color: #61acbb;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; }
+span.magit-branch-local a {  color: #61acbb;  font-family: "default";  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #1b1616;  font-size: 10pt; text-decoration: underline; }
+ --></style>
+
+  </head>
+  <body>
+
+<pre>Head:     <span class="magit-branch-local" id="nil-11">main</span> Add theme json import via file drop (TODO palette import via json file)
+Rebase:   <span class="magit-branch-remote" id="nil-98">github/main</span> Add theme json import via file drop (TODO palette import via json file)
+Push:     <span class="magit-branch-remote" id="nil-192">github/main</span> Add theme json import via file drop (TODO palette import via json file)
+
+<span class="magit-section-heading" id="nil-277">Untracked files</span><span class="magit-section-child-count" id="nil-292"> (6)</span>
+<span class="magit-diff-file-heading-highlight-0000" id="nil-297">theme-tools/htmlfontify-file.el</span><span class="magit-diff-file-heading-highlight-0001" id="nil-328">
+</span><span class="magit-filename" id="nil-329">theme-tools/public/pages/c.html</span>
+<span class="magit-filename" id="nil-361">theme-tools/public/pages/dired.html</span>
+<span class="magit-filename" id="nil-397">theme-tools/public/pages/emacs-lisp.html</span>
+<span class="magit-filename" id="nil-438">theme-tools/public/pages/html.html</span>
+<span class="magit-filename" id="nil-473">theme-tools/soothe-theme.el</span>
+
+<span class="magit-section-heading" id="nil-502">Unstaged changes</span><span class="magit-section-child-count" id="nil-518"> (</span>7<span class="magit-section-child-count" id="nil-521">)</span>
+<span class="magit-diff-file-heading" id="nil-523">modified   theme-tools/index.htm</span><span class="magit-diff-file-heading" id="nil-555">l</span>
+<span onclick="toggle_invis('invisible-557-2166');">…</span><span class="default-0002" id="invisible-557-2166-557">@@ -1,11 +1,39 @@</span><span class="default-0002" id="invisible-557-2166-574">
+</span><span class="default-0003" id="invisible-557-2166-575"> &lt;!DOCTYPE html&gt;
+-&lt;html lang=&quot;en&quot;&gt;
++&lt;html&gt;
+   &lt;head&gt;
+     &lt;meta charset=&quot;UTF-8&quot; /&gt;
+     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+-    &lt;title&gt;Theme-Tools&lt;/title&gt;
++    &lt;title&gt;Emacs Theme Tools&lt;/title&gt;
++    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.googleapis.com&quot; /&gt;
++    &lt;link rel=&quot;preconnect&quot; href=&quot;https://fonts.gstatic.com&quot; crossorigin /&gt;
++    &lt;link
++      href=&quot;https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap&quot;
++      rel=&quot;stylesheet&quot;
++    /&gt;
++    &lt;style&gt;
++      body {
++        font-family: Inter;
++      }
++    &lt;/style&gt;
++    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4&quot;&gt;&lt;/script&gt;
+   &lt;/head&gt;
+-  &lt;body bgcolor=&quot;#000&quot;&gt;
+-    &lt;script type=&quot;module&quot; src=&quot;/src/main.tsx&quot;&gt;&lt;/script&gt;
++  &lt;body class=&quot;bg-[#1a1717] p-3 text-white&quot;&gt;
++    &lt;div class=&quot;text-3xl font-bold mb-5 tracking-tighter&quot;&gt;
++      Emacs Theme Tools
++    &lt;/div&gt;
++    &lt;div class=&quot;rounded-xl border-1 border-[#755050]/50 bg-[#2f2020] p-3&quot;&gt;
++      &lt;div class=&quot;text-lg&quot;&gt;Example Buffers&lt;/div&gt;
++      &lt;div class=&quot;flex flex-col items-start justify-center&quot;&gt;
++        &lt;div&gt;&lt;a href=&quot;pages/emacs-lisp.html&quot;&gt;emacs-lisp &lt;/a&gt;&lt;/div&gt;
++        &lt;div&gt;&lt;a href=&quot;&quot;&gt;magit-status&lt;/a&gt;&lt;/div&gt;
++        &lt;div&gt;&lt;a href=&quot;&quot;&gt;magit-log&lt;/a&gt;&lt;/div&gt;
++        &lt;div&gt;&lt;a href=&quot;&quot;&gt;magit-diff&lt;/a&gt;&lt;/div&gt;
++        &lt;div&gt;&lt;a href=&quot;pages/dired.html&quot;&gt;dired&lt;/a&gt;&lt;/div&gt;
++        &lt;div&gt;&lt;a href=&quot;pages/html.html&quot;&gt;html&lt;/a&gt;&lt;/div&gt;
++        &lt;div&gt;&lt;a href=&quot;&quot;&gt;c&lt;/a&gt;&lt;/div&gt;
++        &lt;div&gt;&lt;a href=&quot;&quot;&gt;python&lt;/a&gt;&lt;/div&gt;
++      &lt;/div&gt;
++    &lt;/div&gt;
++    &lt;script type='module' src=&quot;./src/main.tsx&quot;&gt;&lt;/script&gt;
+   &lt;/body&gt;
+ &lt;/html&gt;
+</span><span class="magit-diff-file-heading" id="nil-2166">modified   theme-tools/package.jso</span><span class="magit-diff-file-heading" id="nil-2200">n</span>
+<span onclick="toggle_invis('invisible-2202-2407');">…</span><span class="default-0002" id="invisible-2202-2407-2202">@@ -47,6 +47,7 @@</span><span class="default-0002" id="invisible-2202-2407-2219">
+</span><span class="default-0003" id="invisible-2202-2407-2220">     &quot;ts-jest&quot;: &quot;^29.4.5&quot;,
+     &quot;typescript&quot;: &quot;~5.9.3&quot;,
+     &quot;typescript-eslint&quot;: &quot;^8.45.0&quot;,
+-    &quot;vite&quot;: &quot;^7.1.7&quot;
++    &quot;vite&quot;: &quot;^7.1.7&quot;,
++    &quot;vite-plugin-static-copy&quot;: &quot;^3.1.4&quot;
+   }
+ }
+</span><span class="magit-diff-file-heading" id="nil-2407">modified   theme-tools/pnpm-lock.yam</span><span class="magit-diff-file-heading" id="nil-2443">l</span>
+<span onclick="toggle_invis('invisible-2445-7670');">…</span><span class="default-0002" id="invisible-2445-7670-2445">@@ -117,6 +117,9 @@ importers:</span><span class="default-0002" id="invisible-2445-7670-2475">
+</span><span class="default-0003" id="invisible-2445-7670-2476">       vite:
+         specifier: ^7.1.7
+         version: 7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)
++      vite-plugin-static-copy:
++        specifier: ^3.1.4
++        version: 3.1.4(vite@7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2))
+ 
+ packages:
+ 
+</span><span class="default-0002" id="invisible-2445-7670-2758">@@ -1268,6 +1271,10 @@ packages:</span><span class="default-0002" id="invisible-2445-7670-2790">
+</span><span class="default-0003" id="invisible-2445-7670-2791">     resolution: {integrity: sha512-2NovHVesVF5TXefsGX1yzx1xgr7+m9JQenvz6FQY3qd+YXkKkYiv+vTCc7OriP9mcDZpTC5mAOYN4ocd29+erA==}
+     hasBin: true
+ 
++  binary-extensions@2.3.0:
++    resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
++    engines: {node: '&gt;=8'}
++
+   brace-expansion@1.1.12:
+     resolution: {integrity: sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==}
+ 
+</span><span class="default-0002" id="invisible-2445-7670-3276">@@ -1325,6 +1332,10 @@ packages:</span><span class="default-0002" id="invisible-2445-7670-3308">
+</span><span class="default-0003" id="invisible-2445-7670-3309">   character-reference-invalid@2.0.1:
+     resolution: {integrity: sha512-iBZ4F4wRbyORVsu0jPV7gXkOsGYjGHPmAyv+HiHG8gi5PtC9KI2j1+v8/tlibRvjoWX027ypmG/n0HtO5t7unw==}
+ 
++  chokidar@3.6.0:
++    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
++    engines: {node: '&gt;= 8.10.0'}
++
+   ci-info@4.3.1:
+     resolution: {integrity: sha512-Wdy2Igu8OcBpI2pZePZ5oWjPC38tmDVx5WKUXKwlLYkA0ozo85sLsLvkBbBn/sZaSCMFOGZJ14fvW9t5/d7kdA==}
+     engines: {node: '&gt;=8'}
+</span><span class="default-0002" id="invisible-2445-7670-3828">@@ -1744,6 +1755,10 @@ packages:</span><span class="default-0002" id="invisible-2445-7670-3860">
+</span><span class="default-0003" id="invisible-2445-7670-3861">   is-arrayish@0.2.1:
+     resolution: {integrity: sha512-zz06S8t0ozoDXMG+ube26zeCTNXcKIPJZJi8hBrF4idCLms4CG9QtK7qBl1boi5ODzFpjswb5JPmHCbMpjaYzg==}
+ 
++  is-binary-path@2.1.0:
++    resolution: {integrity: sha512-ZMERYes6pDydyuGidse7OsHxtbI7WVeUEozgR/g7rd0xUimYNlvZRE/K2MgZTjWy725IfelLeVcEM97mmtRGXw==}
++    engines: {node: '&gt;=8'}
++
+   is-decimal@2.0.1:
+     resolution: {integrity: sha512-AAB9hiomQs5DXWcRB1rqsxGUstbRroFOPPVAomNk/3XHR5JyEZChOyTWe2oayKnsSsr/kcGqF+z6yuH6HHpN0A==}
+ 
+</span><span class="default-0002" id="invisible-2445-7670-4341">@@ -2225,6 +2240,10 @@ packages:</span><span class="default-0002" id="invisible-2445-7670-4373">
+</span><span class="default-0003" id="invisible-2445-7670-4374">     resolution: {integrity: sha512-LaNjtRWUBY++zB5nE/NwcaoMylSPk+S+ZHNB1TzdbMJMny6dynpAGt7X/tl/QYq3TIeE6nxHppbo2LGymrG5Pw==}
+     engines: {node: '&gt;=10'}
+ 
++  p-map@7.0.4:
++    resolution: {integrity: sha512-tkAQEw8ysMzmkhgw8k+1U/iPhWNhykKnSk4Rd5zLoPJCuJaGRPo6YposrZgaxHKzDHdDWWZvE/Sk7hsL2X/CpQ==}
++    engines: {node: '&gt;=18'}
++
+   p-try@2.2.0:
+     resolution: {integrity: sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==}
+     engines: {node: '&gt;=6'}
+</span><span class="default-0002" id="invisible-2445-7670-4874">@@ -2369,6 +2388,10 @@ packages:</span><span class="default-0002" id="invisible-2445-7670-4906">
+</span><span class="default-0003" id="invisible-2445-7670-4907">     resolution: {integrity: sha512-tmbWg6W31tQLeB5cdIBOicJDJRR2KzXsV7uSK9iNfLWQ5bIZfxuPEHp7M8wiHyHnn0DD1i7w3Zmin0FtkrwoCQ==}
+     engines: {node: '&gt;=0.10.0'}
+ 
++  readdirp@3.6.0:
++    resolution: {integrity: sha512-hOS089on8RduqdbhvQ5Z37A0ESjsqz6qnRcffsMU3495FuTdqSm+7bhJ29JvIOsBDEEnan5DPu9t3To9VRlMzA==}
++    engines: {node: '&gt;=8.10.0'}
++
+   refractor@5.0.0:
+     resolution: {integrity: sha512-QXOrHQF5jOpjjLfiNk5GFnWhRXvxjUVnlFxkeDmewR5sXkr3iM46Zo+CnRR8B+MDVqkULW4EcLVcRBNOPXHosw==}
+ 
+</span><span class="default-0002" id="invisible-2445-7670-5396">@@ -2648,6 +2671,12 @@ packages:</span><span class="default-0002" id="invisible-2445-7670-5428">
+</span><span class="default-0003" id="invisible-2445-7670-5429">     resolution: {integrity: sha512-kiGUalWN+rgBJ/1OHZsBtU4rXZOfj/7rKQxULKlIzwzQSvMJUUNgPwJEEh7gU6xEVxC0ahoOBvN2YI8GH6FNgA==}
+     engines: {node: '&gt;=10.12.0'}
+ 
++  vite-plugin-static-copy@3.1.4:
++    resolution: {integrity: sha512-iCmr4GSw4eSnaB+G8zc2f4dxSuDjbkjwpuBLLGvQYR9IW7rnDzftnUjOH5p4RYR+d4GsiBqXRvzuFhs5bnzVyw==}
++    engines: {node: ^18.0.0 || &gt;=20.0.0}
++    peerDependencies:
++      vite: ^5.0.0 || ^6.0.0 || ^7.0.0
++
+   vite@7.2.2:
+     resolution: {integrity: sha512-BxAKBWmIbrDgrokdGZH1IgkIk/5mMHDreLDmCJ0qpyJaAteP8NvMhkwr/ZCQNqNH97bw/dANTE9PDzqwJghfMQ==}
+     engines: {node: ^20.19.0 || &gt;=22.12.0}
+</span><span class="default-0002" id="invisible-2445-7670-6043">@@ -3953,6 +3982,8 @@ snapshots:</span><span class="default-0002" id="invisible-2445-7670-6075">
+</span><span class="default-0003" id="invisible-2445-7670-6076"> 
+   baseline-browser-mapping@2.8.25: {}
+ 
++  binary-extensions@2.3.0: {}
++
+   brace-expansion@1.1.12:
+     dependencies:
+       balanced-match: 1.0.2
+</span><span class="default-0002" id="invisible-2445-7670-6227">@@ -4005,6 +4036,18 @@ snapshots:</span><span class="default-0002" id="invisible-2445-7670-6260">
+</span><span class="default-0003" id="invisible-2445-7670-6261"> 
+   character-reference-invalid@2.0.1: {}
+ 
++  chokidar@3.6.0:
++    dependencies:
++      anymatch: 3.1.3
++      braces: 3.0.3
++      glob-parent: 5.1.2
++      is-binary-path: 2.1.0
++      is-glob: 4.0.3
++      normalize-path: 3.0.0
++      readdirp: 3.6.0
++    optionalDependencies:
++      fsevents: 2.3.3
++
+   ci-info@4.3.1: {}
+ 
+   cjs-module-lexer@2.1.1: {}
+</span><span class="default-0002" id="invisible-2445-7670-6622">@@ -4436,6 +4479,10 @@ snapshots:</span><span class="default-0002" id="invisible-2445-7670-6655">
+</span><span class="default-0003" id="invisible-2445-7670-6656"> 
+   is-arrayish@0.2.1: {}
+ 
++  is-binary-path@2.1.0:
++    dependencies:
++      binary-extensions: 2.3.0
++
+   is-decimal@2.0.1: {}
+ 
+   is-extglob@2.1.1: {}
+</span><span class="default-0002" id="invisible-2445-7670-6813">@@ -5065,6 +5112,8 @@ snapshots:</span><span class="default-0002" id="invisible-2445-7670-6845">
+</span><span class="default-0003" id="invisible-2445-7670-6846">     dependencies:
+       p-limit: 3.1.0
+ 
++  p-map@7.0.4: {}
++
+   p-try@2.2.0: {}
+ 
+   package-json-from-dist@1.0.1: {}
+</span><span class="default-0002" id="invisible-2445-7670-6967">@@ -5202,6 +5251,10 @@ snapshots:</span><span class="default-0002" id="invisible-2445-7670-7000">
+</span><span class="default-0003" id="invisible-2445-7670-7001"> 
+   react@19.2.0: {}
+ 
++  readdirp@3.6.0:
++    dependencies:
++      picomatch: 2.3.1
++
+   refractor@5.0.0:
+     dependencies:
+       '@types/hast': 3.0.4
+</span><span class="default-0002" id="invisible-2445-7670-7156">@@ -5481,6 +5534,14 @@ snapshots:</span><span class="default-0002" id="invisible-2445-7670-7189">
+</span><span class="default-0003" id="invisible-2445-7670-7190">       '@types/istanbul-lib-coverage': 2.0.6
+       convert-source-map: 2.0.0
+ 
++  vite-plugin-static-copy@3.1.4(vite@7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)):
++    dependencies:
++      chokidar: 3.6.0
++      p-map: 7.0.4
++      picocolors: 1.1.1
++      tinyglobby: 0.2.15
++      vite: 7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2)
++
+   vite@7.2.2(@types/node@24.10.0)(jiti@2.6.1)(lightningcss@1.30.2):
+     dependencies:
+       esbuild: 0.25.12
+</span><span class="magit-diff-file-heading" id="nil-7670">deleted    theme-tools/public/pages/index.htm</span><span class="magit-diff-file-heading" id="nil-7715">l</span>
+<span onclick="toggle_invis('invisible-7717-17217');">…</span><span class="default-0002" id="invisible-7717-17217-7717">@@ -1,140 +0,0 @@</span><span class="default-0002" id="invisible-7717-17217-7734">
+</span><span class="default-0003" id="invisible-7717-17217-7735">-&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+-&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.1//EN&quot;
+-&quot;http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd&quot;&gt;
+-&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+-  &lt;head&gt;
+-    &lt;meta charset=&quot;utf-8&quot;/&gt;
+-    &lt;title&gt;index.html&lt;/title&gt;
+-&lt;meta name=&quot;generator&quot; content=&quot;emacs 30.2; htmlfontify&quot; /&gt;
+-&lt;style type=&quot;text/css&quot;&gt;&lt;!--
+-body, pre { text-decoration: none;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+-span.default   { text-decoration: none;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+-span.default a {  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-span.bold   { text-decoration: none;  font-weight: 700;  font-family: &quot;default&quot;;  font-stretch: normal;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; }
+-span.bold a {  font-weight: 700;  font-family: &quot;default&quot;;  font-stretch: normal;  font-style: normal;  color: #fdf4c1;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-span.string   { text-decoration: none;  color: #528b8b;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-span.string a {  color: #528b8b;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-span.variable-name   { text-decoration: none;  color: #83a598;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-span.variable-name a {  color: #83a598;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-span.function-name   { text-decoration: none;  color: #a89984;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-span.function-name a {  color: #a89984;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-span.rainbow-delimiters-depth-1-face   { text-decoration: none;  color: #5c7e81;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-span.rainbow-delimiters-depth-1-face a {  color: #5c7e81;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+-span.keyword   { text-decoration: none;  color: #66999d;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; }
+-span.keyword a {  color: #66999d;  font-family: &quot;default&quot;;  font-stretch: normal;  font-weight: 500;  font-style: normal;  background: #131418;  font-size: 10pt; text-decoration: underline; }
+- --&gt;&lt;/style&gt;
+-
+-    &lt;script type=&quot;text/javascript&quot;&gt;&lt;!--
+-  // this function is needed to work around
+-  // a bug in IE related to element attributes
+-  function hasClass(obj)
+-  {
+-      var result = false;
+-      if (obj.getAttributeNode(&quot;class&quot;) != null)
+-      {
+-          result = obj.getAttributeNode(&quot;class&quot;).value;
+-      }
+-      return result;
+-  }
+-
+-  function stripe(id)
+-  {
+-      // the flag we'll use to keep track of
+-      // whether the current row is odd or even
+-      var even = false;
+-
+-      // if arguments are provided to specify the colors
+-      // of the even &amp; odd rows, then use them;
+-      // otherwise use the following defaults:
+-      var evenColor = arguments[1] ? arguments[1] : &quot;#fff&quot;;
+-      var oddColor  = arguments[2] ? arguments[2] : &quot;#ddd&quot;;
+-
+-      // obtain a reference to the desired table
+-      // if no such table exists, abort
+-      var table = document.getElementById(id);
+-      if (! table) { return; }
+-
+-      // by definition, tables can have more than one tbody
+-      // element, so we'll have to get the list of child
+-      // &amp;lt;tbody&amp;gt;s
+-      var tbodies = table.getElementsByTagName(&quot;tbody&quot;);
+-
+-      // and iterate through them...
+-      for (var h = 0; h &lt; tbodies.length; h++)
+-      {
+-          // find all the &amp;lt;tr&amp;gt; elements...
+-          var trs = tbodies[h].getElementsByTagName(&quot;tr&quot;);
+-
+-          // ... and iterate through them
+-          for (var i = 0; i &lt; trs.length; i++)
+-          {
+-              // avoid rows that have a class attribute
+-              // or backgroundColor style
+-              if (! hasClass(trs[i]) &amp;&amp;
+-                  ! trs[i].style.backgroundColor)
+-              {
+-                  // get all the cells in this row...
+-                  var tds = trs[i].getElementsByTagName(&quot;td&quot;);
+-
+-                  // and iterate through them...
+-                  for (var j = 0; j &lt; tds.length; j++)
+-                  {
+-                      var mytd = tds[j];
+-
+-                      // avoid cells that have a class attribute
+-                      // or backgroundColor style
+-                      if (! hasClass(mytd) &amp;&amp;
+-                          ! mytd.style.backgroundColor)
+-                      {
+-                          mytd.style.backgroundColor =
+-                            even ? evenColor : oddColor;
+-                      }
+-                  }
+-              }
+-              // flip from odd to even, or vice-versa
+-              even =  ! even;
+-          }
+-      }
+-  }
+-
+-  function toggle_invis( name )
+-  {
+-      var filter =
+-        { acceptNode:
+-          function( node )
+-          { var classname = node.id;
+-            if( classname )
+-            { var classbase = classname.substr( 0, name.length );
+-              if( classbase == name ) { return NodeFilter.FILTER_ACCEPT; } }
+-            return NodeFilter.FILTER_SKIP; } };
+-      var walker = document.createTreeWalker( document.body           ,
+-                                              NodeFilter.SHOW_ELEMENT ,
+-                                              filter                  ,
+-                                              false                   );
+-      while( walker.nextNode() )
+-      {
+-          var e = walker.currentNode;
+-          if( e.style.display == &quot;none&quot; ) { e.style.display = &quot;inline&quot;; }
+-          else                            { e.style.display = &quot;none&quot;;   }
+-      }
+-  }
+---&gt; &lt;/script&gt;
+-  &lt;/head&gt;
+-  &lt;body onload=&quot;stripe('index'); return true;&quot;&gt;
+-
+-&lt;pre&gt;&amp;lt;&lt;span class=&quot;keyword&quot;&gt;!DOCTYPE&lt;/span&gt; html&amp;gt;
+-&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;function-name&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;variable-name&quot;&gt;lang&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;en&amp;quot;&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-  &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;function-name&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-    &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;function-name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;variable-name&quot;&gt;charset&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;UTF-8&amp;quot;&lt;/span&gt; /&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-    &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;function-name&quot;&gt;meta&lt;/span&gt; &lt;span class=&quot;variable-name&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;viewport&amp;quot;&lt;/span&gt; &lt;span class=&quot;variable-name&quot;&gt;content&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&lt;/span&gt; /&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-    &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;function-name&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;bold&quot;&gt;Theme-Tools&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;/&lt;span class=&quot;function-name&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-  &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;/&lt;span class=&quot;function-name&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-  &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;function-name&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;variable-name&quot;&gt;bgcolor&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;#000&amp;quot;&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-    &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;function-name&quot;&gt;script&lt;/span&gt; &lt;span class=&quot;variable-name&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;module&amp;quot;&lt;/span&gt; &lt;span class=&quot;variable-name&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&amp;quot;/src/main.tsx&amp;quot;&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;/&lt;span class=&quot;function-name&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-  &lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;/&lt;span class=&quot;function-name&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;lt;&lt;/span&gt;/&lt;span class=&quot;function-name&quot;&gt;html&lt;/span&gt;&lt;span class=&quot;rainbow-delimiters-depth-1-face&quot;&gt;&amp;gt;&lt;/span&gt;
+-&lt;/pre&gt;
+-
+- &lt;/body&gt;
+- &lt;script src=&quot;../emacs-theme-tools.js&quot; &gt;&lt;/script&gt;
+-&lt;/html&gt;
+</span><span class="magit-diff-file-heading" id="nil-17217">modified   theme-tools/src/components/theme-import-export.ts</span><span class="magit-diff-file-heading" id="nil-17277">x</span>
+<span onclick="toggle_invis('invisible-17279-21409');">…</span><span class="default-0002" id="invisible-17279-21409-17279">@@ -14,11 +14,11 @@ import {</span><span class="default-0002" id="invisible-17279-21409-17307">
+</span><span class="default-0003" id="invisible-17279-21409-17308"> import { cn } from &quot;@/lib/utils&quot;
+ import {
+   AlertTriangleIcon,
++  ArrowLeft,
+   CircleCheckBigIcon,
+   CircleX,
+   ImportIcon,
+-  Merge,
+-  Save
++  Save,
+ } from &quot;lucide-react&quot;
+ import { useEffect, useState, type FC } from &quot;react&quot;
+ import { Prism } from &quot;react-syntax-highlighter&quot;
+</span><span class="default-0002" id="invisible-17279-21409-17592">@@ -70,15 +70,24 @@ export const ThemeImportExport: FC = () =&gt; {</span><span class="default-0002" id="invisible-17279-21409-17656">
+</span><span class="default-0003" id="invisible-17279-21409-17657">     maxFiles: 1,
+   })
+ 
+-  const { importFrom, setImportedThemeSwatches } = useEmacsTheme()
++  const {
++    importFrom,
++    setImportedThemeSwatches,
++    themeSwatches,
++    importedThemeSwatches,
++    mergeSwatches
++  } = useEmacsTheme()
+ 
+   const [isImporting, setIsImporting] = useState&lt;boolean&gt;(false)
+-  const [isMerging, setIsMerging] = useState&lt;boolean&gt;(false)
+   const [importedThemeJSONValid, setImportedThemeJSONValid] = useState&lt;boolean&gt;(true)
+   const [importedThemeJSON, setImportedThemeJSON] = useState&lt;string&gt;('')
+   const themeJson = JSON.stringify(JSON.parse(window.localStorage.getItem('theme')!), null, 4)
+   const expectedKeys = [&quot;className&quot;, &quot;name&quot;, &quot;foreground&quot;, &quot;background&quot;] as const
+ 
++  const mergeImportedTheme = () =&gt; {
++    mergeSwatches(themeSwatches, importedThemeSwatches)
++  }
++
+   useEffect(() =&gt; {
+     if (importedThemeJSONValid &amp;&amp; importedThemeJSON !== '') {
+       setImportedThemeSwatches(JSON.parse(importedThemeJSON))
+</span><span class="default-0002" id="invisible-17279-21409-18621">@@ -154,27 +163,25 @@ export const ThemeImportExport: FC = () =&gt; {</span><span class="default-0002" id="invisible-17279-21409-18687">
+</span><span class="default-0003" id="invisible-17279-21409-18688">               /&gt;
+             &lt;/Tooltip&gt;
+           }
+-
+           &lt;Tooltip
+             layout=&quot;top-center&quot;
+             text=&quot;Import theme JSON (replaces theme data)&quot;
+           &gt;
+-            &lt;ImportIcon
+-              style={thinIconStyle}
+-              onClick={() =&gt; setIsImporting(!isImporting)}
+-              className={mainToolBarButtonClasses}
+-            /&gt;
+-          &lt;/Tooltip&gt;
+-
+-          {isImporting &amp;&amp; importedThemeJSON !== &quot;&quot; &amp;&amp; importedThemeJSONValid &amp;&amp; (
+-            &lt;Tooltip layout=&quot;top-center&quot; text=&quot;Merge&quot;&gt;
+-              &lt;Merge
++            {!isImporting
++              ?
++              &lt;ImportIcon
+                 style={thinIconStyle}
+-                onClick={() =&gt; setIsMerging(!isMerging)}
++                onClick={() =&gt; setIsImporting(!isImporting)}
+                 className={mainToolBarButtonClasses}
+               /&gt;
+-            &lt;/Tooltip&gt;
+-          )}
++              :
++              &lt;ArrowLeft
++                style={thinIconStyle}
++                onClick={() =&gt; setIsImporting(!isImporting)}
++                className={mainToolBarButtonClasses}
++              /&gt;
++            }
++          &lt;/Tooltip&gt;
+         &lt;/div&gt;
+ 
+         {isImporting &amp;&amp; (
+</span><span class="default-0002" id="invisible-17279-21409-19884">@@ -192,8 +199,7 @@ export const ThemeImportExport: FC = () =&gt; {</span><span class="default-0002" id="invisible-17279-21409-19948">
+</span><span class="default-0003" id="invisible-17279-21409-19949">                 &lt;p className=&quot;text-emerald-300&quot;&gt;Drop the JSON file here …&lt;/p&gt;
+               ) : (
+                 &lt;p className=&quot;text-gray-400&quot;&gt;
+-                  Drag &amp; drop a &lt;code&gt;.json&lt;/code&gt; file here, or click to
+-                  browse…
++                  Drag &amp; drop a theme file here (click to browse...)
+                 &lt;/p&gt;
+               )}
+             &lt;/div&gt;
+</span><span class="default-0002" id="invisible-17279-21409-20328">@@ -218,7 +224,14 @@ export const ThemeImportExport: FC = () =&gt; {</span><span class="default-0002" id="invisible-17279-21409-20393">
+</span><span class="default-0003" id="invisible-17279-21409-20394">                       }}
+                       className={cn(actionButton, &quot;bg-emerald-900/50&quot;)}
+                     &gt;
+-                      Confirm Import
++                      Import Theme
++                    &lt;/div&gt;
++
++                    &lt;div
++                      onClick={() =&gt; mergeImportedTheme()}
++                      className={cn(actionButton, &quot;bg-teal-900/50&quot;)}
++                    &gt;
++                      Merge Theme
+                     &lt;/div&gt;
+                   &lt;/&gt;
+                 ) : (
+</span><span class="default-0002" id="invisible-17279-21409-20908">@@ -246,7 +259,7 @@ export const ThemeImportExport: FC = () =&gt; {</span><span class="default-0002" id="invisible-17279-21409-20972">
+</span><span class="default-0003" id="invisible-17279-21409-20973">             &lt;textarea
+               placeholder=&quot;Paste theme-faces JSON...&quot;
+               rows={30}
+-              className={`w-full h-full ${importedThemeJSONValid ? &quot;&quot; : &quot;border-2 border-[#800]&quot;
++              className={`w-full h-full rounded-xl ${importedThemeJSONValid ? &quot;&quot; : &quot;border-2 border-[#800]&quot;
+                 }`}
+               value={importedThemeJSON}
+               onChange={(e) =&gt; validateAndSet(e.target.value)}
+</span><span class="magit-diff-file-heading" id="nil-21409">modified   theme-tools/src/contexts/emacs-theme-context.ts</span><span class="magit-diff-file-heading" id="nil-21467">x</span>
+<span onclick="toggle_invis('invisible-21469-21861');">…</span><span class="default-0002" id="invisible-21469-21861-21469">@@ -46,6 +46,9 @@ export const EmacsThemeProvider: FC&lt;{ children: ReactNode }&gt; = ({ children }) =&gt;</span><span class="default-0002" id="invisible-21469-21861-21567">
+</span><span class="default-0003" id="invisible-21469-21861-21568">     flushSync(() =&gt; applyThemeSwatchesToSheet(importedSwatches));
+   }
+ 
++  /*
++  B overwrites A
++  */
+   const mergeSwatches = (a: ThemeSwatchType[], b: ThemeSwatchType[]) =&gt; {
+     const map = new Map&lt;string, ThemeSwatchType&gt;();
+     a.forEach(swatch =&gt; map.set(swatch.className, swatch));
+</span><span class="magit-diff-file-heading" id="nil-21861">modified   theme-tools/vite.config.t</span><span class="magit-diff-file-heading" id="nil-21897">s</span>
+<span onclick="toggle_invis('invisible-21899-23215');">…</span><span class="default-0002" id="invisible-21899-23215-21899">@@ -1,30 +1,42 @@</span><span class="default-0002" id="invisible-21899-23215-21916">
+</span><span class="default-0003" id="invisible-21899-23215-21917">-import { defineConfig } from 'vite'
+-import react from '@vitejs/plugin-react'
+-import path from 'path'
++import { defineConfig } from &quot;vite&quot;;
++import react from &quot;@vitejs/plugin-react&quot;;
++import path from &quot;path&quot;;
++import { viteStaticCopy } from 'vite-plugin-static-copy'
+ 
+ export default defineConfig({
+-  base: './',
++  base: &quot;./&quot;,
+   build: {
+-    chunkSizeWarningLimit: 2000,
+-    outDir: 'dist',
+-    cssCodeSplit: false,
+     rollupOptions: {
+       maxParallelFileOps: 1000,
+       output: {
+-        entryFileNames: 'emacs-theme-tools.js',
+-        chunkFileNames: 'emacs-theme-tools.js',
+-        assetFileNames: '[name].[ext]',
++        entryFileNames: &quot;emacs-theme-tools.js&quot;,
++        chunkFileNames: &quot;emacs-theme-tools.js&quot;,
++        assetFileNames: &quot;[name].[ext]&quot;,
+         manualChunks: undefined,
+-      },
++      }
+     },
++    chunkSizeWarningLimit: 2000,
++    outDir: &quot;dist&quot;,
+   },
+   server: {
+     allowedHosts: [],
+   },
+   resolve: {
+     alias: {
+-      '@': path.resolve(__dirname, './src'),
++      &quot;@&quot;: path.resolve(__dirname, &quot;./src&quot;),
+     },
+   },
+-  plugins: [react()],
+-})
++  plugins: [
++    react(),
++    viteStaticCopy(
++      {
++        targets: [
++          {
++            src: 'index.html',
++            dest: '.',
++          }
++        ]
++      }
++    )
++  ],
++});
+</span>
+<span class="magit-section-heading" id="nil-23216">R</span><span class="magit-section-heading" id="nil-23217">ecent commit</span><span class="magit-section-heading" id="nil-23229">s</span>
+<span onclick="toggle_invis('invisible-23231-23712');">…</span><span class="default-0004" id="invisible-23231-23712-23231">9</span><span class="default-0004" id="invisible-23231-23712-23232">23bcf4c</span><span class="default-0003" id="invisible-23231-23712-23239"> </span><span class="default-0005" id="invisible-23231-23712-23240">github/</span><span class="magit-branch-local-0006" id="invisible-23231-23712-23247">main</span><span class="default-0003" id="invisible-23231-23712-23251"> Add theme json import via file drop (TODO palette import via json file)</span><span class="default-0003" id="invisible-23231-23712-23323">
+</span><span class="default-0004" id="invisible-23231-23712-23324">9</span><span class="default-0004" id="invisible-23231-23712-23325">ccebd5a</span><span class="default-0003" id="invisible-23231-23712-23332"> Fix theme, palette import/export separate window position tracking</span><span class="default-0003" id="invisible-23231-23712-23399">
+</span><span class="default-0004" id="invisible-23231-23712-23400">3</span><span class="default-0004" id="invisible-23231-23712-23401">11e4893</span><span class="default-0003" id="invisible-23231-23712-23408"> Place .nojekyll on deploy target</span><span class="default-0003" id="invisible-23231-23712-23441">
+</span><span class="default-0004" id="invisible-23231-23712-23442">f</span><span class="default-0004" id="invisible-23231-23712-23443">2b3f588</span><span class="default-0003" id="invisible-23231-23712-23450"> Fix emacs theme tools deploy</span><span class="default-0003" id="invisible-23231-23712-23479">
+</span><span class="default-0004" id="invisible-23231-23712-23480">a</span><span class="default-0004" id="invisible-23231-23712-23481">54feb64</span><span class="default-0003" id="invisible-23231-23712-23488"> Update README.md</span><span class="default-0003" id="invisible-23231-23712-23505">
+</span><span class="default-0004" id="invisible-23231-23712-23506">7</span><span class="default-0004" id="invisible-23231-23712-23507">2eea2b2</span><span class="default-0003" id="invisible-23231-23712-23514"> Update README.md</span><span class="default-0003" id="invisible-23231-23712-23531">
+</span><span class="default-0004" id="invisible-23231-23712-23532">d</span><span class="default-0004" id="invisible-23231-23712-23533">a2e682a</span><span class="default-0003" id="invisible-23231-23712-23540"> Fix github link</span><span class="default-0003" id="invisible-23231-23712-23556">
+</span><span class="default-0004" id="invisible-23231-23712-23557">f</span><span class="default-0004" id="invisible-23231-23712-23558">c93cb3e</span><span class="default-0003" id="invisible-23231-23712-23565"> update pages to build and deploy from pages and theme-tools</span><span class="default-0003" id="invisible-23231-23712-23625">
+</span><span class="default-0004" id="invisible-23231-23712-23626">0</span><span class="default-0004" id="invisible-23231-23712-23627">1e80d09</span><span class="default-0003" id="invisible-23231-23712-23634"> remove duplicate of workflows</span><span class="default-0003" id="invisible-23231-23712-23664">
+</span><span class="default-0004" id="invisible-23231-23712-23665">f</span><span class="default-0004" id="invisible-23231-23712-23666">71d6c46</span><span class="default-0003" id="invisible-23231-23712-23673"> fix vite ts config and test build ok</span><span class="default-0003" id="invisible-23231-23712-23710">
+</span><span class="default-0003" id="invisible-23231-23712-23711">
+</span></pre>
+
+    <script src="../emacs-theme-tools.js"></script>
+  </body>
+</html>
